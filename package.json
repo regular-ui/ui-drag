@@ -1,0 +1,30 @@
+{
+  "name": "rgui-drag",
+  "description": "Regular UI - Draggable, Droppable, Movable",
+  "version": "0.2.0",
+  "author": "Rainfore <rainforest92@126.com>",
+  "main": "./index.js",
+  "repository": "regular-ui/ui-drag",
+  "homepage": "http://regular-ui.github.io",
+  "bugs": {"url": "http://github.com/regular-ui/ui-drag/issues"},
+  "license": "MIT",
+  "keywords": [
+    "regular",
+    "ui",
+    "rgui",
+    "drag",
+    "drop",
+    "movable"
+  ],
+  "tags": [
+    "regular",
+    "ui",
+    "rgui",
+    "drag",
+    "drop",
+    "movable"
+  ],
+  "dependencies": {
+    "rgui-base": "^0.2.0-alpha"
+  }
+}
