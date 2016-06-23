@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<!-- 该文件由rgui-tools自动生成 -->
+<meta charset="utf-8">
+<title>Regular UI</title>
+<meta name="author" content="Rainfore">
+<meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
+<meta name="description" content="Regular UI">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="icon" href="http://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://regular-ui.github.io/css/doc.default.min.css">
+<link rel="stylesheet" href="../css/index.css">
+<!--[if lt IE9]>
+<script>
+(function() {
+    if (!
+    /*@cc_on!@*/
+    0) return;
+    var e = 'abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video'.split(', ');
+    var i= e.length;
+    while (i--)
+        document.createElement(e[i]);
+})();
+</script>
+<![endif]-->
+</head>
+<body>
+<div class="g-top">
+    <div class="g-topc">
+        <a class="u-logo" href="./">Regular UI</a>
+    </div>
+</div>
+<div class="g-bd"><div class="g-bdc"><div class="g-mn g-mn-center">
+    <article class="m-article">
+        <h1>拖拽<small> Draggable</small></h1>
+        <h2 id="案例">案例</h2>
+<h3 id="可拖动的弹窗">可拖动的弹窗</h3>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-primary&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{visible</span> = <span class="cm-attribute">true}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>显示弹窗<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-modal&quot;</span> <span class="cm-attribute">r-hide</span>=<span class="cm-attribute">{!visible}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;modal_dialog&quot;</span> <span class="cm-attribute">ref</span>=<span class="cm-string">&quot;modalDialog&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-attribute">{this.$refs.modalDialog}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;modal_hd&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;modal_close&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{visible</span> = <span class="cm-attribute">false}</span><span class="cm-tagcm-bracketcm-error">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">i</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-icon u-icon-close&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">i</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">h3</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;modal_title&quot;</span><span class="cm-tagcm-bracket">&gt;</span>提示<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">h3</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;modal_bd&quot;</span><span class="cm-tagcm-bracket">&gt;</span>请拖动标题栏<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;modal_ft&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-primary&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{visible</span> = <span class="cm-attribute">false}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>确定<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>,
+    <span class="cm-property">data</span>: {<span class="cm-property">visible</span>: <span class="cm-atom">false</span>}
+});
+</code></pre>
+<h3 id="拖拽约束">拖拽约束</h3>
+<div class="m-example"><style>.m-well {position: relative; overflow: hidden; width: 220px; height: 220px; background: #fafafa; border: 1px solid #eee; color: #999; text-align: center;}
+.u-ball {position: absolute; left: 100px; top: 100px; width: 20px; height: 20px; border-radius: 100%; background: #00c0ef;}</style></div>
+
+<pre class="lang-css"><code><span class="cm-qualifier">.m-well</span> {<span class="cm-property">position</span>: <span class="cm-atom">relative</span>; <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>; <span class="cm-property">width</span>: <span class="cm-number">220px</span>; <span class="cm-property">height</span>: <span class="cm-number">220px</span>; <span class="cm-property">background</span>: <span class="cm-atom">#fafafa</span>; <span class="cm-property">border</span>: <span class="cm-number">1px</span> <span class="cm-atom">solid</span> <span class="cm-atom">#eee</span>; <span class="cm-property">color</span>: <span class="cm-atom">#999</span>; <span class="cm-property">text-align</span>: <span class="cm-atom">center</span>;}
+<span class="cm-qualifier">.u-ball</span> {<span class="cm-property">position</span>: <span class="cm-atom">absolute</span>; <span class="cm-property">left</span>: <span class="cm-number">100px</span>; <span class="cm-property">top</span>: <span class="cm-number">100px</span>; <span class="cm-property">width</span>: <span class="cm-number">20px</span>; <span class="cm-property">height</span>: <span class="cm-number">20px</span>; <span class="cm-property">border-radius</span>: <span class="cm-number">100%</span>; <span class="cm-property">background</span>: <span class="cm-atom">#00c0ef</span>;}
+</code></pre>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-well&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-string">&quot;self&quot;</span> <span class="cm-attribute">ref</span>=<span class="cm-string">&quot;draggable0&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-ball&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+            水平约束
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-well&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-string">&quot;self&quot;</span> <span class="cm-attribute">ref</span>=<span class="cm-string">&quot;draggable1&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-ball&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+            垂直约束
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-well&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-string">&quot;self&quot;</span> <span class="cm-attribute">ref</span>=<span class="cm-string">&quot;draggable2&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-ball&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+            45度约束
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-well&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-string">&quot;self&quot;</span> <span class="cm-attribute">ref</span>=<span class="cm-string">&quot;draggable3&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-ball&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+            范围约束
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-well&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-string">&quot;self&quot;</span> <span class="cm-attribute">ref</span>=<span class="cm-string">&quot;draggable4&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-ball&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+            网格约束
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-well&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-string">&quot;self&quot;</span> <span class="cm-attribute">ref</span>=<span class="cm-string">&quot;draggable5&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-ball&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;left: 160px; top: 120px;&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+            圆约束
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>,
+    <span class="cm-property">init</span>() {
+        <span class="cm-keyword">let</span> <span class="cm-def">free</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">draggable0</span>.<span class="cm-property">restrict</span>;
+
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">draggable0</span>.<span class="cm-property">restrict</span> <span class="cm-operator">=</span> (<span class="cm-def">params</span>) <span class="cm-operator">=&gt;</span>
+            ({<span class="cm-property">left</span>: <span class="cm-variable-2">params</span>.<span class="cm-property">startLeft</span> <span class="cm-operator">+</span> <span class="cm-variable-2">params</span>.<span class="cm-property">dragX</span>, <span class="cm-property">top</span>: <span class="cm-variable-2">params</span>.<span class="cm-property">startTop</span>});
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">draggable1</span>.<span class="cm-property">restrict</span> <span class="cm-operator">=</span> (<span class="cm-def">params</span>) <span class="cm-operator">=&gt;</span>
+            ({<span class="cm-property">left</span>: <span class="cm-variable-2">params</span>.<span class="cm-property">startLeft</span>, <span class="cm-property">top</span>: <span class="cm-variable-2">params</span>.<span class="cm-property">startTop</span> <span class="cm-operator">+</span> <span class="cm-variable-2">params</span>.<span class="cm-property">dragY</span>});
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">draggable2</span>.<span class="cm-property">restrict</span> <span class="cm-operator">=</span> (<span class="cm-def">params</span>) <span class="cm-operator">=&gt;</span> {
+            <span class="cm-keyword">let</span> <span class="cm-def">min</span> <span class="cm-operator">=</span> <span class="cm-variable">Math</span>.<span class="cm-property">min</span>(<span class="cm-variable-2">params</span>.<span class="cm-property">dragX</span>, <span class="cm-variable-2">params</span>.<span class="cm-property">dragY</span>);
+            <span class="cm-keyword">return</span> {<span class="cm-property">left</span>: <span class="cm-variable-2">params</span>.<span class="cm-property">startLeft</span> <span class="cm-operator">+</span> <span class="cm-variable-2">min</span>, <span class="cm-property">top</span>: <span class="cm-variable-2">params</span>.<span class="cm-property">startTop</span> <span class="cm-operator">+</span> <span class="cm-variable-2">min</span>};
+        };
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">draggable3</span>.<span class="cm-property">restrict</span> <span class="cm-operator">=</span> (<span class="cm-def">params</span>) <span class="cm-operator">=&gt;</span> {
+            <span class="cm-keyword">let</span> <span class="cm-def">next</span> <span class="cm-operator">=</span> <span class="cm-variable-2">free</span>(<span class="cm-variable-2">params</span>);
+
+            <span class="cm-keyword">let</span> <span class="cm-def">min</span> <span class="cm-operator">=</span> <span class="cm-number">80</span>, <span class="cm-def">max</span> <span class="cm-operator">=</span> <span class="cm-number">120</span>;
+            <span class="cm-variable-2">next</span>.<span class="cm-property">left</span> <span class="cm-operator">=</span> <span class="cm-variable">Math</span>.<span class="cm-property">min</span>(<span class="cm-variable">Math</span>.<span class="cm-property">max</span>(<span class="cm-variable-2">min</span>, <span class="cm-variable-2">next</span>.<span class="cm-property">left</span>), <span class="cm-variable-2">max</span>);
+            <span class="cm-variable-2">next</span>.<span class="cm-property">top</span> <span class="cm-operator">=</span> <span class="cm-variable">Math</span>.<span class="cm-property">min</span>(<span class="cm-variable">Math</span>.<span class="cm-property">max</span>(<span class="cm-variable-2">min</span>, <span class="cm-variable-2">next</span>.<span class="cm-property">top</span>), <span class="cm-variable-2">max</span>);
+
+            <span class="cm-keyword">return</span> <span class="cm-variable-2">next</span>;
+        };
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">draggable4</span>.<span class="cm-property">restrict</span> <span class="cm-operator">=</span> (<span class="cm-def">params</span>) <span class="cm-operator">=&gt;</span> {
+            <span class="cm-keyword">let</span> <span class="cm-def">next</span> <span class="cm-operator">=</span> <span class="cm-variable-2">free</span>(<span class="cm-variable-2">params</span>);
+
+            <span class="cm-keyword">let</span> <span class="cm-def">grid</span> <span class="cm-operator">=</span> <span class="cm-number">40</span>;
+            <span class="cm-variable-2">next</span>.<span class="cm-property">left</span> <span class="cm-operator">=</span> <span class="cm-variable">Math</span>.<span class="cm-property">round</span>(<span class="cm-variable-2">next</span>.<span class="cm-property">left</span><span class="cm-operator">/</span><span class="cm-variable-2">grid</span>)<span class="cm-operator">*</span><span class="cm-variable-2">grid</span>;
+            <span class="cm-variable-2">next</span>.<span class="cm-property">top</span> <span class="cm-operator">=</span> <span class="cm-variable">Math</span>.<span class="cm-property">round</span>(<span class="cm-variable-2">next</span>.<span class="cm-property">top</span><span class="cm-operator">/</span><span class="cm-variable-2">grid</span>)<span class="cm-operator">*</span><span class="cm-variable-2">grid</span>;
+
+            <span class="cm-keyword">return</span> <span class="cm-variable-2">next</span>;
+        };
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">draggable5</span>.<span class="cm-property">restrict</span> <span class="cm-operator">=</span> (<span class="cm-def">params</span>) <span class="cm-operator">=&gt;</span> {
+            <span class="cm-keyword">let</span> <span class="cm-def">next</span> <span class="cm-operator">=</span> <span class="cm-variable-2">free</span>(<span class="cm-variable-2">params</span>);
+
+            <span class="cm-keyword">let</span> <span class="cm-def">nextNorm</span> <span class="cm-operator">=</span> <span class="cm-variable">Math</span>.<span class="cm-property">sqrt</span>(<span class="cm-variable-2">next</span>.<span class="cm-property">left</span><span class="cm-operator">*</span><span class="cm-variable-2">next</span>.<span class="cm-property">left</span> <span class="cm-operator">+</span> <span class="cm-variable-2">next</span>.<span class="cm-property">top</span><span class="cm-operator">*</span><span class="cm-variable-2">next</span>.<span class="cm-property">top</span>);
+            <span class="cm-keyword">let</span> <span class="cm-def">radius</span> <span class="cm-operator">=</span> <span class="cm-number">200</span>;
+            <span class="cm-variable-2">next</span>.<span class="cm-property">left</span> <span class="cm-operator">*=</span> <span class="cm-variable-2">radius</span><span class="cm-operator">/</span><span class="cm-variable-2">nextNorm</span>;
+            <span class="cm-variable-2">next</span>.<span class="cm-property">top</span> <span class="cm-operator">*=</span> <span class="cm-variable-2">radius</span><span class="cm-operator">/</span><span class="cm-variable-2">nextNorm</span>;
+
+            <span class="cm-keyword">return</span> <span class="cm-variable-2">next</span>;
+        };
+    }
+});
+</code></pre>
+
+        
+    </article>
+</div>
+</div></div><div class="g-ft">
+    <footer class="m-footer">
+        <p><a href="http://regular-ui.github.io/" class="footer_logo"><img src="http://regular-ui.github.io/img/logo-v2.0-bg-48.png" /></p>
+        <p>
+            <a href="https://github.com/regular-ui/regular-ui" target="_blank">GitHub</a> |
+            <a href="https://github.com/regular-ui/regular-ui/issues" target="_blank">Issues</a> |
+            <a href="https://github.com/regular-ui/regular-ui/releases" target="_blank">ChangeLog</a> |
+            <a href="https://github.com/regular-ui/regular-ui/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a>
+        </p>
+        <p>Licensed under <a href="https://github.com/regular-ui/regular-ui/blob/master/LICENSE" target="_blank">MIT license</a>.</p>
+    </footer>
+</div>
+<script src="http://regular-ui.github.io/vendor/regular.min.js"></script>
+<script src="../js/index.js"></script>
+<script>
+var $$ = function(selector){return document.querySelectorAll(selector)};
+$$('.m-article > h2, .m-article > h3').forEach(function($heading) {
+    $heading.innerHTML = '<a href="#' + $heading.id + '">' + $heading.innerText + '</a>';
+});
+</script>
+<script>
+"use strict";
+
+var index = 0;
+(function (index) {
+    var template = "<button class=\"u-btn u-btn-primary\" on-click={visible = true}>显示弹窗</button>\n<div class=\"m-modal\" r-hide={!visible}>\n    <div class=\"modal_dialog\" ref=\"modalDialog\">\n        <draggable proxy={this.$refs.modalDialog}>\n        <div class=\"modal_hd\">\n            <a class=\"modal_close\" on-click={visible = false}><i class=\"u-icon u-icon-close\"></i></a>\n            <h3 class=\"modal_title\">提示</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\">请拖动标题栏</div>\n        <div class=\"modal_ft\">\n            <button class=\"u-btn u-btn-primary\" on-click={visible = false}>确定</button>\n        </div>\n    </div>\n</div>";
+    var component = new RGUI.Component({
+        template: template,
+        data: { visible: false }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<div class=\"g-row\">\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable0\"><div class=\"u-ball\"></div></draggable>\n            水平约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable1\"><div class=\"u-ball\"></div></draggable>\n            垂直约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable2\"><div class=\"u-ball\"></div></draggable>\n            45度约束\n        </div>\n    </div>\n</div>\n<div class=\"g-row\">\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable3\"><div class=\"u-ball\"></div></draggable>\n            范围约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable4\"><div class=\"u-ball\"></div></draggable>\n            网格约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable5\"><div class=\"u-ball\" style=\"left: 160px; top: 120px;\"></div></draggable>\n            圆约束\n        </div>\n    </div>\n</div>";
+    var component = new RGUI.Component({
+        template: template,
+        init: function init() {
+            var free = this.$refs.draggable0.restrict;
+
+            this.$refs.draggable0.restrict = function (params) {
+                return { left: params.startLeft + params.dragX, top: params.startTop };
+            };
+            this.$refs.draggable1.restrict = function (params) {
+                return { left: params.startLeft, top: params.startTop + params.dragY };
+            };
+            this.$refs.draggable2.restrict = function (params) {
+                var min = Math.min(params.dragX, params.dragY);
+                return { left: params.startLeft + min, top: params.startTop + min };
+            };
+            this.$refs.draggable3.restrict = function (params) {
+                var next = free(params);
+
+                var min = 80,
+                    max = 120;
+                next.left = Math.min(Math.max(min, next.left), max);
+                next.top = Math.min(Math.max(min, next.top), max);
+
+                return next;
+            };
+            this.$refs.draggable4.restrict = function (params) {
+                var next = free(params);
+
+                var grid = 40;
+                next.left = Math.round(next.left / grid) * grid;
+                next.top = Math.round(next.top / grid) * grid;
+
+                return next;
+            };
+            this.$refs.draggable5.restrict = function (params) {
+                var next = free(params);
+
+                var nextNorm = Math.sqrt(next.left * next.left + next.top * next.top);
+                var radius = 200;
+                next.left *= radius / nextNorm;
+                next.top *= radius / nextNorm;
+
+                return next;
+            };
+        }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+</script>
+</body>
+</html>

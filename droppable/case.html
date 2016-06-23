@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<!-- 该文件由rgui-tools自动生成 -->
+<meta charset="utf-8">
+<title>Regular UI</title>
+<meta name="author" content="Rainfore">
+<meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
+<meta name="description" content="Regular UI">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="icon" href="http://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://regular-ui.github.io/css/doc.default.min.css">
+<link rel="stylesheet" href="../css/index.css">
+<!--[if lt IE9]>
+<script>
+(function() {
+    if (!
+    /*@cc_on!@*/
+    0) return;
+    var e = 'abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video'.split(', ');
+    var i= e.length;
+    while (i--)
+        document.createElement(e[i]);
+})();
+</script>
+<![endif]-->
+</head>
+<body>
+<div class="g-top">
+    <div class="g-topc">
+        <a class="u-logo" href="./">Regular UI</a>
+    </div>
+</div>
+<div class="g-bd"><div class="g-bdc"><div class="g-mn g-mn-center">
+    <article class="m-article">
+        <h1><small> Droppable</small></h1>
+        <h2 id="案例">案例</h2>
+<h3 id="列表排序（占位型）">列表排序（占位型）</h3>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span> <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onListDragOver($event,</span> <span class="cm-attribute">{list:</span> <span class="cm-attribute">listA})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-listview m-listview-gutter&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            {#list listA as item}
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+                    <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event,</span> <span class="cm-attribute">{list:</span> <span class="cm-attribute">listA})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">@({item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listA})</span> <span class="cm-attribute">}</span>
+                    <span class="cm-attribute">on-dragend</span>=<span class="cm-attribute">{this._onDragEnd($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>{item.text}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+            {/list}
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span> <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onListDragOver($event,</span> <span class="cm-attribute">{list:</span> <span class="cm-attribute">listB})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-listview m-listview-gutter&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            {#list listB as item}
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+                    <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event,</span> <span class="cm-attribute">{list:</span> <span class="cm-attribute">listB})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">@({item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listB})</span> <span class="cm-attribute">}</span>
+                    <span class="cm-attribute">on-dragend</span>=<span class="cm-attribute">{this._onDragEnd($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>{item.text}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+            {/list}
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">_</span> <span class="cm-operator">=</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">_</span>;
+<span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">listA</span>: [
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A1&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A2&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A3&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A4&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A5&#39;</span>},
+        ],
+        <span class="cm-variable">listB</span>: [
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B1&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B2&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B3&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B4&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B5&#39;</span>},
+        ],
+    },
+    <span class="cm-property">_getElementIndex</span>(<span class="cm-def">element</span>) {
+        <span class="cm-keyword">return</span> <span class="cm-variable">Array</span>.<span class="cm-property">prototype</span>.<span class="cm-property">indexOf</span>.<span class="cm-property">call</span>(<span class="cm-variable-2">element</span>.<span class="cm-property">parentElement</span>.<span class="cm-property">children</span>, <span class="cm-variable-2">element</span>);
+    },
+    <span class="cm-property">_onDragOver</span>(<span class="cm-def">$event</span>, <span class="cm-def">tgt</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">source</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">source</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">target</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+
+        <span class="cm-comment">// 排除source和target相同的情况</span>
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">source</span> <span class="cm-operator">===</span> <span class="cm-variable-2">target</span>)
+            <span class="cm-keyword">return</span>;
+
+        <span class="cm-keyword">let</span> <span class="cm-def">sourceParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">source</span>.<span class="cm-property">parentElement</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">targetParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">target</span>.<span class="cm-property">parentElement</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">sourceIndex</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">_getElementIndex</span>(<span class="cm-variable-2">source</span>);
+        <span class="cm-keyword">let</span> <span class="cm-def">targetIndex</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">_getElementIndex</span>(<span class="cm-variable-2">target</span>);
+
+        <span class="cm-comment">// 删除起始元素</span>
+        <span class="cm-variable-2">sourceParent</span>.<span class="cm-property">removeChild</span>(<span class="cm-variable-2">source</span>);
+
+        <span class="cm-comment">// 再将起始元素插入到新的位置</span>
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">sourceIndex</span> <span class="cm-operator">&gt;=</span> <span class="cm-variable-2">targetIndex</span> <span class="cm-operator">||</span> <span class="cm-variable-2">sourceParent</span> <span class="cm-operator">!==</span> <span class="cm-variable-2">targetParent</span>)
+            <span class="cm-variable-2">targetParent</span>.<span class="cm-property">insertBefore</span>(<span class="cm-variable-2">source</span>, <span class="cm-variable-2">target</span>);
+        <span class="cm-keyword">else</span>
+            <span class="cm-variable-2">targetParent</span>.<span class="cm-property">insertBefore</span>(<span class="cm-variable-2">source</span>, <span class="cm-variable-2">target</span>.<span class="cm-property">nextElementSibling</span>);
+
+        <span class="cm-comment">// 记录目标列表</span>
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">tgt</span> <span class="cm-operator">=</span> <span class="cm-variable-2">tgt</span>;
+    },
+    <span class="cm-property">_onListDragOver</span>(<span class="cm-def">$event</span>, <span class="cm-def">tgt</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">source</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">source</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">sourceParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">source</span>.<span class="cm-property">parentElement</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">targetParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+
+        <span class="cm-comment">// 删除起始元素</span>
+        <span class="cm-variable-2">sourceParent</span>.<span class="cm-property">removeChild</span>(<span class="cm-variable-2">source</span>);
+        <span class="cm-comment">// 再将起始元素插入到新的位置</span>
+        <span class="cm-variable-2">targetParent</span>.<span class="cm-property">appendChild</span>(<span class="cm-variable-2">source</span>);
+
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">tgt</span> <span class="cm-operator">=</span> <span class="cm-variable-2">tgt</span>;
+    },
+    <span class="cm-property">_onDragEnd</span>(<span class="cm-def">$event</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">src</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">value</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">tgt</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">tgt</span>;
+        <span class="cm-keyword">if</span>(<span class="cm-operator">!</span><span class="cm-variable-2">tgt</span>) <span class="cm-keyword">return</span>;
+
+        <span class="cm-comment">// 获取起始元素的初始位置</span>
+        <span class="cm-variable-2">src</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+        <span class="cm-comment">// 获取起始元素的结束位置</span>
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">_getElementIndex</span>(<span class="cm-variable-2">$event</span>.<span class="cm-property">source</span>);
+
+        <span class="cm-comment">// 从起始列表中删除对象</span>
+        <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">index</span>, <span class="cm-number">1</span>);
+        <span class="cm-comment">// 在目标列表中插入对象</span>
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span>, <span class="cm-number">0</span>, <span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+    }
+});
+</code></pre>
+<h3 id="网格排序（占位型）">网格排序（占位型）</h3>
+<div class="m-example"><style>.m-gridView {list-style: none; overflow: auto; margin: 0; padding: 0; width: 400px;}
+.m-gridView li {float: left;}
+.u-brick {box-sizing: border-box; cursor: default; width: 80px; height: 80px; margin: 8px; border: 2px solid #ddd; border-radius: 4px; line-height: 40px; text-align: center; background: #f4f4f4;}
+.m-gridView li.z-dragSource > .u-brick {border: 2px dashed #00c0ef; background: transparent; font-size: 0;}</style></div>
+
+<pre class="lang-css"><code><span class="cm-qualifier">.m-gridView</span> {<span class="cm-property">list-style</span>: <span class="cm-atom">none</span>; <span class="cm-property">overflow</span>: <span class="cm-atom">auto</span>; <span class="cm-property">margin</span>: <span class="cm-number">0</span>; <span class="cm-property">padding</span>: <span class="cm-number">0</span>; <span class="cm-property">width</span>: <span class="cm-number">400px</span>;}
+<span class="cm-qualifier">.m-gridView</span> <span class="cm-tag">li</span> {<span class="cm-property">float</span>: <span class="cm-atom">left</span>;}
+<span class="cm-qualifier">.u-brick</span> {<span class="cm-property">box-sizing</span>: <span class="cm-atom">border-box</span>; <span class="cm-property">cursor</span>: <span class="cm-atom">default</span>; <span class="cm-property">width</span>: <span class="cm-number">80px</span>; <span class="cm-property">height</span>: <span class="cm-number">80px</span>; <span class="cm-property">margin</span>: <span class="cm-number">8px</span>; <span class="cm-property">border</span>: <span class="cm-number">2px</span> <span class="cm-atom">solid</span> <span class="cm-atom">#ddd</span>; <span class="cm-property">border-radius</span>: <span class="cm-number">4px</span>; <span class="cm-property">line-height</span>: <span class="cm-number">40px</span>; <span class="cm-property">text-align</span>: <span class="cm-atom">center</span>; <span class="cm-property">background</span>: <span class="cm-atom">#f4f4f4</span>;}
+<span class="cm-qualifier">.m-gridView</span> <span class="cm-tag">li</span><span class="cm-qualifier">.z-dragSource</span> &gt; <span class="cm-qualifier">.u-brick</span> {<span class="cm-property">border</span>: <span class="cm-number">2px</span> <span class="cm-atom">dashed</span> <span class="cm-atom">#00c0ef</span>; <span class="cm-property">background</span>: <span class="cm-atom">transparent</span>; <span class="cm-property">font-size</span>: <span class="cm-number">0</span>;}
+</code></pre>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span> <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onListDragOver($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-gridView&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    {#list list as item}
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+            <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span>
+            <span class="cm-attribute">value</span>=<span class="cm-attribute">{item}</span>
+            <span class="cm-attribute">on-dragend</span>=<span class="cm-attribute">{this._onDragEnd($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-brick&quot;</span><span class="cm-tagcm-bracket">&gt;</span>{item.text}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+    {/list}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">_</span> <span class="cm-operator">=</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">util</span>;
+<span class="cm-keyword">let</span> <span class="cm-variable">list</span> <span class="cm-operator">=</span> [];
+<span class="cm-keyword">for</span>(<span class="cm-keyword">let</span> <span class="cm-variable">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">i</span> <span class="cm-operator">&lt;</span> <span class="cm-number">15</span>; <span class="cm-variable">i</span><span class="cm-operator">++</span>)
+    <span class="cm-variable">list</span>.<span class="cm-property">push</span>({<span class="cm-property">text</span>: <span class="cm-string">&#39;选项C&#39;</span> <span class="cm-operator">+</span> <span class="cm-variable">i</span>});
+
+<span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {<span class="cm-property">list</span>: <span class="cm-variable">list</span>},
+    <span class="cm-property">_getElementIndex</span>(<span class="cm-def">element</span>) {
+        <span class="cm-keyword">return</span> <span class="cm-variable">Array</span>.<span class="cm-property">prototype</span>.<span class="cm-property">indexOf</span>.<span class="cm-property">call</span>(<span class="cm-variable-2">element</span>.<span class="cm-property">parentElement</span>.<span class="cm-property">children</span>, <span class="cm-variable-2">element</span>);
+    },
+    <span class="cm-property">_onDragOver</span>(<span class="cm-def">$event</span>, <span class="cm-def">tgt</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">source</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">source</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">target</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+
+        <span class="cm-comment">// 排除source和target相同的情况</span>
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">source</span> <span class="cm-operator">===</span> <span class="cm-variable-2">target</span>)
+            <span class="cm-keyword">return</span>;
+
+        <span class="cm-keyword">let</span> <span class="cm-def">sourceParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">source</span>.<span class="cm-property">parentElement</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">targetParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">target</span>.<span class="cm-property">parentElement</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">sourceIndex</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">_getElementIndex</span>(<span class="cm-variable-2">source</span>);
+        <span class="cm-keyword">let</span> <span class="cm-def">targetIndex</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">_getElementIndex</span>(<span class="cm-variable-2">target</span>);
+
+        <span class="cm-comment">// 删除起始元素</span>
+        <span class="cm-variable-2">sourceParent</span>.<span class="cm-property">removeChild</span>(<span class="cm-variable-2">source</span>);
+
+        <span class="cm-comment">// 再将起始元素插入到新的位置</span>
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">sourceIndex</span> <span class="cm-operator">&gt;=</span> <span class="cm-variable-2">targetIndex</span> <span class="cm-operator">||</span> <span class="cm-variable-2">sourceParent</span> <span class="cm-operator">!==</span> <span class="cm-variable-2">targetParent</span>)
+            <span class="cm-variable-2">targetParent</span>.<span class="cm-property">insertBefore</span>(<span class="cm-variable-2">source</span>, <span class="cm-variable-2">target</span>);
+        <span class="cm-keyword">else</span>
+            <span class="cm-variable-2">targetParent</span>.<span class="cm-property">insertBefore</span>(<span class="cm-variable-2">source</span>, <span class="cm-variable-2">target</span>.<span class="cm-property">nextElementSibling</span>);
+
+        <span class="cm-comment">// 记录目标列表</span>
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">tgt</span> <span class="cm-operator">=</span> <span class="cm-variable-2">tgt</span>;
+    },
+    <span class="cm-property">_onListDragOver</span>(<span class="cm-def">$event</span>, <span class="cm-def">tgt</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">source</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">source</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">sourceParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">source</span>.<span class="cm-property">parentElement</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">targetParent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+
+        <span class="cm-comment">// 删除起始元素</span>
+        <span class="cm-variable-2">sourceParent</span>.<span class="cm-property">removeChild</span>(<span class="cm-variable-2">source</span>);
+        <span class="cm-comment">// 再将起始元素插入到新的位置</span>
+        <span class="cm-variable-2">targetParent</span>.<span class="cm-property">appendChild</span>(<span class="cm-variable-2">source</span>);
+
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">tgt</span> <span class="cm-operator">=</span> <span class="cm-variable-2">tgt</span>;
+    },
+    <span class="cm-property">_onDragEnd</span>(<span class="cm-def">$event</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">src</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">value</span>;
+        <span class="cm-keyword">let</span> <span class="cm-def">tgt</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">tgt</span>;
+        <span class="cm-keyword">if</span>(<span class="cm-operator">!</span><span class="cm-variable-2">tgt</span>) <span class="cm-keyword">return</span>;
+
+        <span class="cm-comment">// 获取起始元素的初始位置</span>
+        <span class="cm-variable-2">src</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+        <span class="cm-comment">// 获取起始元素的结束位置</span>
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">_getElementIndex</span>(<span class="cm-variable-2">$event</span>.<span class="cm-property">source</span>);
+
+        <span class="cm-comment">// 从起始列表中删除对象</span>
+        <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">index</span>, <span class="cm-number">1</span>);
+        <span class="cm-comment">// 在目标列表中插入对象</span>
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span>, <span class="cm-number">0</span>, <span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+    }
+});
+</code></pre>
+<h3 id="列表排序（标记型）">列表排序（标记型）</h3>
+<div class="m-example"><style>.m-listview {padding: 0;}
+.m-listview > li.z-dragProxy {opacity: 0.7;}
+.m-listview > li.z-dragTarget.z-dragTarget-before:before, .m-listview > li.z-dragTarget.z-dragTarget-after:after {
+    content: ''; display: block;
+    position: absolute; left: 0; right: 0; z-index: 2;
+    border-top: 2px solid #3c8dbc;
+}
+.m-listview > li.z-dragTarget.z-dragTarget-before:before {top: -1px;}
+.m-listview > li.z-dragTarget.z-dragTarget-after:after {bottom: -1px;}</style></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-listview&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            {#list listA as item}
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+                    <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event)}</span>
+                    <span class="cm-attribute">on-drop</span>=<span class="cm-attribute">{this._onDrop($event,</span> <span class="cm-attribute">{item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listA})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">@({item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listA})</span> <span class="cm-attribute">}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>{item.text}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+            {/list}
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-listview&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            {#list listB as item}
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+                    <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event)}</span>
+                    <span class="cm-attribute">on-drop</span>=<span class="cm-attribute">{this._onDrop($event,</span> <span class="cm-attribute">{item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listB})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">@({item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listB})</span> <span class="cm-attribute">}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>{item.text}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+            {/list}
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-css"><code><span class="cm-qualifier">.m-listview</span> {<span class="cm-property">padding</span>: <span class="cm-number">0</span>;}
+<span class="cm-qualifier">.m-listview</span> &gt; <span class="cm-tag">li</span><span class="cm-qualifier">.z-dragProxy</span> {<span class="cm-property">opacity</span>: <span class="cm-number">0.7</span>;}
+<span class="cm-qualifier">.m-listview</span> &gt; <span class="cm-tag">li</span><span class="cm-qualifier">.z-dragTarget</span><span class="cm-qualifier">.z-dragTarget-before</span>:<span class="cm-variable-3">before</span>, <span class="cm-qualifier">.m-listview</span> &gt; <span class="cm-tag">li</span><span class="cm-qualifier">.z-dragTarget</span><span class="cm-qualifier">.z-dragTarget-after</span>:<span class="cm-variable-3">after</span> {
+    <span class="cm-property">content</span>: <span class="cm-string">&#39;&#39;</span>; <span class="cm-property">display</span>: <span class="cm-atom">block</span>;
+    <span class="cm-property">position</span>: <span class="cm-atom">absolute</span>; <span class="cm-property">left</span>: <span class="cm-number">0</span>; <span class="cm-property">right</span>: <span class="cm-number">0</span>; <span class="cm-property">z-index</span>: <span class="cm-number">2</span>;
+    <span class="cm-property">border-top</span>: <span class="cm-number">2px</span> <span class="cm-atom">solid</span> <span class="cm-atom">#3c8dbc</span>;
+}
+<span class="cm-qualifier">.m-listview</span> &gt; <span class="cm-tag">li</span><span class="cm-qualifier">.z-dragTarget</span><span class="cm-qualifier">.z-dragTarget-before</span>:<span class="cm-variable-3">before</span> {<span class="cm-property">top</span>: <span class="cm-number">-1px</span>;}
+<span class="cm-qualifier">.m-listview</span> &gt; <span class="cm-tag">li</span><span class="cm-qualifier">.z-dragTarget</span><span class="cm-qualifier">.z-dragTarget-after</span>:<span class="cm-variable-3">after</span> {<span class="cm-property">bottom</span>: <span class="cm-number">-1px</span>;}
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">_</span> <span class="cm-operator">=</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">_</span>;
+<span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">listA</span>: [
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A1&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A2&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A3&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A4&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A5&#39;</span>},
+        ],
+        <span class="cm-variable">listB</span>: [
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B1&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B2&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B3&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B4&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B5&#39;</span>},
+        ],
+    },
+    <span class="cm-property">_onDragOver</span>(<span class="cm-def">$event</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">target</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-before&#39;</span>);
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-after&#39;</span>);
+
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">addClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-&#39;</span> <span class="cm-operator">+</span> (<span class="cm-variable-2">$event</span>.<span class="cm-property">ratioY</span> <span class="cm-operator">&lt;</span> <span class="cm-number">0.5</span> <span class="cm-operator">?</span> <span class="cm-string">&#39;before&#39;</span> : <span class="cm-string">&#39;after&#39;</span>));
+    },
+    <span class="cm-property">_onDrop</span>(<span class="cm-def">$event</span>, <span class="cm-def">tgt</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">target</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-before&#39;</span>);
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-after&#39;</span>);
+
+        <span class="cm-keyword">let</span> <span class="cm-def">src</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">value</span>;
+        <span class="cm-variable-2">src</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">item</span>);
+
+        <span class="cm-comment">// 从起始列表中删除对象</span>
+        <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">index</span>, <span class="cm-number">1</span>);
+
+        <span class="cm-comment">// 计算目标列表中插入位置的index</span>
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">list</span> <span class="cm-operator">===</span> <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>) <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span><span class="cm-operator">--</span>;
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">$event</span>.<span class="cm-property">ratioY</span> <span class="cm-operator">&gt;=</span> <span class="cm-number">0.5</span>) <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span><span class="cm-operator">++</span>;
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">&lt;</span> <span class="cm-number">0</span>) <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
+
+        <span class="cm-comment">// 在目标列表中插入对象</span>
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span>, <span class="cm-number">0</span>, <span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+
+        <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">item</span>.<span class="cm-property">text</span>, <span class="cm-string">&#39;insert&#39;</span>, <span class="cm-variable-2">$event</span>.<span class="cm-property">ratioY</span> <span class="cm-operator">&lt;</span> <span class="cm-number">0.5</span> <span class="cm-operator">?</span> <span class="cm-string">&#39;before&#39;</span> : <span class="cm-string">&#39;after&#39;</span>, <span class="cm-variable-2">tgt</span>.<span class="cm-property">item</span>.<span class="cm-property">text</span>);
+    }
+});
+</code></pre>
+<h3 id="列表排序（标记型）---加强版">列表排序（标记型） - 加强版</h3>
+<div class="m-example"><style>.m-listview-gutter {padding: 7px 0; min-height: 240px;}
+.m-listview-gutter > li {padding: 3px 10px;}
+.m-listview-gutter > li:hover {background: none;}
+.m-listview-gutter > li > div {background: #eee; padding: 5px 20px; border-radius: 2px;}
+.m-listview-gutter > li.z-dragSource > div {opacity: 0.6;}
+.m-listview-gutter.z-dragTarget.z-dragTarget-before:before, .m-listview-gutter.z-dragTarget.z-dragTarget-after:after  {
+    content: ''; display: block;
+    position: relative; z-index: 2;
+    border-top: 2px solid #3c8dbc;
+    top: -1px; margin-bottom: -2px;
+}</style></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+            <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event)}</span>
+            <span class="cm-attribute">on-drop</span>=<span class="cm-attribute">{this._onListDrop($event,</span> <span class="cm-attribute">{list:</span> <span class="cm-attribute">listA})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-listview m-listview-gutter&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            {#list listA as item}
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+                    <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event)}</span>
+                    <span class="cm-attribute">on-drop</span>=<span class="cm-attribute">{this._onDrop($event,</span> <span class="cm-attribute">{item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listA})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">@({item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listA})</span> <span class="cm-attribute">}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>{item.text}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+            {/list}
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+            <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event)}</span>
+            <span class="cm-attribute">on-drop</span>=<span class="cm-attribute">{this._onListDrop($event,</span> <span class="cm-attribute">{list:</span> <span class="cm-attribute">listB})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-listview m-listview-gutter&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            {#list listB as item}
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span>
+                    <span class="cm-attribute">on-dragover</span>=<span class="cm-attribute">{this._onDragOver($event)}</span>
+                    <span class="cm-attribute">on-drop</span>=<span class="cm-attribute">{this._onDrop($event,</span> <span class="cm-attribute">{item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listB})}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">@({item:</span> <span class="cm-attribute">item,</span> <span class="cm-attribute">list:</span> <span class="cm-attribute">listB})</span> <span class="cm-attribute">}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>{item.text}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+            {/list}
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-css"><code><span class="cm-qualifier">.m-listview-gutter</span> {<span class="cm-property">padding</span>: <span class="cm-number">7px</span> <span class="cm-number">0</span>; <span class="cm-property">min-height</span>: <span class="cm-number">240px</span>;}
+<span class="cm-qualifier">.m-listview-gutter</span> &gt; <span class="cm-tag">li</span> {<span class="cm-property">padding</span>: <span class="cm-number">3px</span> <span class="cm-number">10px</span>;}
+<span class="cm-qualifier">.m-listview-gutter</span> &gt; <span class="cm-tag">li</span>:<span class="cm-variable-3">hover</span> {<span class="cm-property">background</span>: <span class="cm-atom">none</span>;}
+<span class="cm-qualifier">.m-listview-gutter</span> &gt; <span class="cm-tag">li</span> &gt; <span class="cm-tag">div</span> {<span class="cm-property">background</span>: <span class="cm-atom">#eee</span>; <span class="cm-property">padding</span>: <span class="cm-number">5px</span> <span class="cm-number">20px</span>; <span class="cm-property">border-radius</span>: <span class="cm-number">2px</span>;}
+<span class="cm-qualifier">.m-listview-gutter</span> &gt; <span class="cm-tag">li</span><span class="cm-qualifier">.z-dragSource</span> &gt; <span class="cm-tag">div</span> {<span class="cm-property">opacity</span>: <span class="cm-number">0.6</span>;}
+<span class="cm-qualifier">.m-listview-gutter</span><span class="cm-qualifier">.z-dragTarget</span><span class="cm-qualifier">.z-dragTarget-before</span>:<span class="cm-variable-3">before</span>, <span class="cm-qualifier">.m-listview-gutter</span><span class="cm-qualifier">.z-dragTarget</span><span class="cm-qualifier">.z-dragTarget-after</span>:<span class="cm-variable-3">after</span>  {
+    <span class="cm-property">content</span>: <span class="cm-string">&#39;&#39;</span>; <span class="cm-property">display</span>: <span class="cm-atom">block</span>;
+    <span class="cm-property">position</span>: <span class="cm-atom">relative</span>; <span class="cm-property">z-index</span>: <span class="cm-number">2</span>;
+    <span class="cm-property">border-top</span>: <span class="cm-number">2px</span> <span class="cm-atom">solid</span> <span class="cm-atom">#3c8dbc</span>;
+    <span class="cm-property">top</span>: <span class="cm-number">-1px</span>; <span class="cm-property">margin-bottom</span>: <span class="cm-number">-2px</span>;
+}
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">_</span> <span class="cm-operator">=</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">_</span>;
+<span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">listA</span>: [
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A1&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A2&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A3&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A4&#39;</span>},
+            {<span class="cm-property">text</span>: <span class="cm-string">&#39;选项A5&#39;</span>},
+        ],
+        <span class="cm-variable">listB</span>: [
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B1&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B2&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B3&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B4&#39;</span>},
+            {<span class="cm-variable">text</span>: <span class="cm-string">&#39;选项B5&#39;</span>},
+        ],
+    },
+    <span class="cm-property">_onDragOver</span>(<span class="cm-def">$event</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">target</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-before&#39;</span>);
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-after&#39;</span>);
+
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">addClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-&#39;</span> <span class="cm-operator">+</span> (<span class="cm-variable-2">$event</span>.<span class="cm-property">ratioY</span> <span class="cm-operator">&lt;</span> <span class="cm-number">0.5</span> <span class="cm-operator">?</span> <span class="cm-string">&#39;before&#39;</span> : <span class="cm-string">&#39;after&#39;</span>));
+    },
+    <span class="cm-property">_onDrop</span>(<span class="cm-def">$event</span>, <span class="cm-def">tgt</span>) {
+        <span class="cm-keyword">let</span> <span class="cm-def">target</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">target</span>;
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-before&#39;</span>);
+        <span class="cm-variable">_</span>.<span class="cm-property">dom</span>.<span class="cm-property">delClass</span>(<span class="cm-variable-2">target</span>, <span class="cm-string">&#39;z-dragTarget-after&#39;</span>);
+
+        <span class="cm-keyword">let</span> <span class="cm-def">src</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">value</span>;
+        <span class="cm-variable-2">src</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">item</span>);
+
+        <span class="cm-comment">// 从起始列表中删除对象</span>
+        <span class="cm-variable-2">src</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">index</span>, <span class="cm-number">1</span>);
+
+        <span class="cm-comment">// 计算目标列表中插入位置的index</span>
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">list</span> <span class="cm-operator">===</span> <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>) <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span><span class="cm-operator">--</span>;
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">$event</span>.<span class="cm-property">ratioY</span> <span class="cm-operator">&gt;=</span> <span class="cm-number">0.5</span>) <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span><span class="cm-operator">++</span>;
+        <span class="cm-keyword">if</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">&lt;</span> <span class="cm-number">0</span>) <span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
+
+        <span class="cm-comment">// 在目标列表中插入对象</span>
+        <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>.<span class="cm-property">splice</span>(<span class="cm-variable-2">tgt</span>.<span class="cm-property">index</span>, <span class="cm-number">0</span>, <span class="cm-variable-2">src</span>.<span class="cm-property">item</span>);
+
+        <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">src</span>.<span class="cm-property">item</span>.<span class="cm-property">text</span>, <span class="cm-string">&#39;insert&#39;</span>, <span class="cm-variable-2">$event</span>.<span class="cm-property">ratioY</span> <span class="cm-operator">&lt;</span> <span class="cm-number">0.5</span> <span class="cm-operator">?</span> <span class="cm-string">&#39;before&#39;</span> : <span class="cm-string">&#39;after&#39;</span>, <span class="cm-variable-2">tgt</span>.<span class="cm-property">item</span>.<span class="cm-property">text</span>);
+    },
+    <span class="cm-property">_onListDrop</span>(<span class="cm-def">$event</span>, <span class="cm-def">tgt</span>) {
+        <span class="cm-keyword">this</span>.<span class="cm-property">_onDrop</span>(<span class="cm-variable-2">$event</span>, {
+            <span class="cm-property">list</span>: <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>,
+            <span class="cm-property">item</span>: <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>[<span class="cm-variable-2">$event</span>.<span class="cm-property">ratioY</span> <span class="cm-operator">&gt;=</span> <span class="cm-number">0.5</span> <span class="cm-operator">?</span> <span class="cm-variable-2">tgt</span>.<span class="cm-property">list</span>.<span class="cm-property">length</span> <span class="cm-operator">-</span> <span class="cm-number">1</span> : <span class="cm-number">0</span>]
+        });
+    }
+});
+</code></pre>
+
+        
+    </article>
+</div>
+</div></div><div class="g-ft">
+    <footer class="m-footer">
+        <p><a href="http://regular-ui.github.io/" class="footer_logo"><img src="http://regular-ui.github.io/img/logo-v2.0-bg-48.png" /></p>
+        <p>
+            <a href="https://github.com/regular-ui/regular-ui" target="_blank">GitHub</a> |
+            <a href="https://github.com/regular-ui/regular-ui/issues" target="_blank">Issues</a> |
+            <a href="https://github.com/regular-ui/regular-ui/releases" target="_blank">ChangeLog</a> |
+            <a href="https://github.com/regular-ui/regular-ui/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a>
+        </p>
+        <p>Licensed under <a href="https://github.com/regular-ui/regular-ui/blob/master/LICENSE" target="_blank">MIT license</a>.</p>
+    </footer>
+</div>
+<script src="http://regular-ui.github.io/vendor/regular.min.js"></script>
+<script src="../js/index.js"></script>
+<script>
+var $$ = function(selector){return document.querySelectorAll(selector)};
+$$('.m-article > h2, .m-article > h3').forEach(function($heading) {
+    $heading.innerHTML = '<a href="#' + $heading.id + '">' + $heading.innerText + '</a>';
+});
+</script>
+<script>
+'use strict';
+
+var index = 0;
+(function (index) {
+    var template = '<div class="g-row">\n    <div class="g-col g-col-6">\n        <droppable on-dragover={this._onListDragOver($event, {list: listA})}>\n        <ul class="m-listview m-listview-gutter">\n            {#list listA as item}\n                <droppable\n                    on-dragover={this._onDragOver($event, {list: listA})}>\n                <draggable value={ @({item: item, list: listA}) }\n                    on-dragend={this._onDragEnd($event)}>\n                    <li><div>{item.text}</div></li>\n                </draggable>\n                </droppable>\n            {/list}\n        </ul>\n        </droppable>\n    </div>\n    <div class="g-col g-col-6">\n        <droppable on-dragover={this._onListDragOver($event, {list: listB})}>\n        <ul class="m-listview m-listview-gutter">\n            {#list listB as item}\n                <droppable\n                    on-dragover={this._onDragOver($event, {list: listB})}>\n                <draggable value={ @({item: item, list: listB}) }\n                    on-dragend={this._onDragEnd($event)}>\n                    <li><div>{item.text}</div></li>\n                </draggable>\n                </droppable>\n            {/list}\n        </ul>\n        </droppable>\n    </div>\n</div>';
+    var _ = RGUI._;
+    var component = new RGUI.Component({
+        template: template,
+        data: {
+            listA: [{ text: '选项A1' }, { text: '选项A2' }, { text: '选项A3' }, { text: '选项A4' }, { text: '选项A5' }],
+            listB: [{ text: '选项B1' }, { text: '选项B2' }, { text: '选项B3' }, { text: '选项B4' }, { text: '选项B5' }]
+        },
+        _getElementIndex: function _getElementIndex(element) {
+            return Array.prototype.indexOf.call(element.parentElement.children, element);
+        },
+        _onDragOver: function _onDragOver($event, tgt) {
+            var source = $event.source;
+            var target = $event.target;
+
+            // 排除source和target相同的情况
+            if (source === target) return;
+
+            var sourceParent = source.parentElement;
+            var targetParent = target.parentElement;
+            var sourceIndex = this._getElementIndex(source);
+            var targetIndex = this._getElementIndex(target);
+
+            // 删除起始元素
+            sourceParent.removeChild(source);
+
+            // 再将起始元素插入到新的位置
+            if (sourceIndex >= targetIndex || sourceParent !== targetParent) targetParent.insertBefore(source, target);else targetParent.insertBefore(source, target.nextElementSibling);
+
+            // 记录目标列表
+            this.data.tgt = tgt;
+        },
+        _onListDragOver: function _onListDragOver($event, tgt) {
+            var source = $event.source;
+            var sourceParent = source.parentElement;
+            var targetParent = $event.target;
+
+            // 删除起始元素
+            sourceParent.removeChild(source);
+            // 再将起始元素插入到新的位置
+            targetParent.appendChild(source);
+
+            this.data.tgt = tgt;
+        },
+        _onDragEnd: function _onDragEnd($event) {
+            var src = $event.value;
+            var tgt = this.data.tgt;
+            if (!tgt) return;
+
+            // 获取起始元素的初始位置
+            src.index = src.list.indexOf(src.item);
+            // 获取起始元素的结束位置
+            tgt.index = this._getElementIndex($event.source);
+
+            // 从起始列表中删除对象
+            src.list.splice(src.index, 1);
+            // 在目标列表中插入对象
+            tgt.list.splice(tgt.index, 0, src.item);
+        }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = '<droppable on-dragover={this._onListDragOver($event)}>\n<ul class="m-gridView">\n    {#list list as item}\n        <droppable\n            on-dragover={this._onDragOver($event)}>\n        <draggable\n            value={item}\n            on-dragend={this._onDragEnd($event)}>\n            <li><div class="u-brick">{item.text}</div></li>\n        </draggable>\n        </droppable>\n    {/list}\n</ul>\n</droppable>';
+    var _ = RGUI.util;
+    var list = [];
+    for (var i = 0; i < 15; i++) {
+        list.push({ text: '选项C' + i });
+    }var component = new RGUI.Component({
+        template: template,
+        data: { list: list },
+        _getElementIndex: function _getElementIndex(element) {
+            return Array.prototype.indexOf.call(element.parentElement.children, element);
+        },
+        _onDragOver: function _onDragOver($event, tgt) {
+            var source = $event.source;
+            var target = $event.target;
+
+            // 排除source和target相同的情况
+            if (source === target) return;
+
+            var sourceParent = source.parentElement;
+            var targetParent = target.parentElement;
+            var sourceIndex = this._getElementIndex(source);
+            var targetIndex = this._getElementIndex(target);
+
+            // 删除起始元素
+            sourceParent.removeChild(source);
+
+            // 再将起始元素插入到新的位置
+            if (sourceIndex >= targetIndex || sourceParent !== targetParent) targetParent.insertBefore(source, target);else targetParent.insertBefore(source, target.nextElementSibling);
+
+            // 记录目标列表
+            this.data.tgt = tgt;
+        },
+        _onListDragOver: function _onListDragOver($event, tgt) {
+            var source = $event.source;
+            var sourceParent = source.parentElement;
+            var targetParent = $event.target;
+
+            // 删除起始元素
+            sourceParent.removeChild(source);
+            // 再将起始元素插入到新的位置
+            targetParent.appendChild(source);
+
+            this.data.tgt = tgt;
+        },
+        _onDragEnd: function _onDragEnd($event) {
+            var src = $event.value;
+            var tgt = this.data.tgt;
+            if (!tgt) return;
+
+            // 获取起始元素的初始位置
+            src.index = src.list.indexOf(src.item);
+            // 获取起始元素的结束位置
+            tgt.index = this._getElementIndex($event.source);
+
+            // 从起始列表中删除对象
+            src.list.splice(src.index, 1);
+            // 在目标列表中插入对象
+            tgt.list.splice(tgt.index, 0, src.item);
+        }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = '<div class="g-row">\n    <div class="g-col g-col-6">\n        <ul class="m-listview">\n            {#list listA as item}\n                <droppable\n                    on-dragover={this._onDragOver($event)}\n                    on-drop={this._onDrop($event, {item: item, list: listA})}>\n                <draggable value={ @({item: item, list: listA}) }>\n                    <li>{item.text}</li>\n                </draggable>\n                </droppable>\n            {/list}\n        </ul>\n    </div>\n    <div class="g-col g-col-6">\n        <ul class="m-listview">\n            {#list listB as item}\n                <droppable\n                    on-dragover={this._onDragOver($event)}\n                    on-drop={this._onDrop($event, {item: item, list: listB})}>\n                <draggable value={ @({item: item, list: listB}) }>\n                    <li>{item.text}</li>\n                </draggable>\n                </droppable>\n            {/list}\n        </ul>\n    </div>\n</div>';
+    var _ = RGUI._;
+    var component = new RGUI.Component({
+        template: template,
+        data: {
+            listA: [{ text: '选项A1' }, { text: '选项A2' }, { text: '选项A3' }, { text: '选项A4' }, { text: '选项A5' }],
+            listB: [{ text: '选项B1' }, { text: '选项B2' }, { text: '选项B3' }, { text: '选项B4' }, { text: '选项B5' }]
+        },
+        _onDragOver: function _onDragOver($event) {
+            var target = $event.target;
+            _.dom.delClass(target, 'z-dragTarget-before');
+            _.dom.delClass(target, 'z-dragTarget-after');
+
+            _.dom.addClass(target, 'z-dragTarget-' + ($event.ratioY < 0.5 ? 'before' : 'after'));
+        },
+        _onDrop: function _onDrop($event, tgt) {
+            var target = $event.target;
+            _.dom.delClass(target, 'z-dragTarget-before');
+            _.dom.delClass(target, 'z-dragTarget-after');
+
+            var src = $event.value;
+            src.index = src.list.indexOf(src.item);
+            tgt.index = tgt.list.indexOf(tgt.item);
+
+            // 从起始列表中删除对象
+            src.list.splice(src.index, 1);
+
+            // 计算目标列表中插入位置的index
+            if (src.list === tgt.list) tgt.index--;
+            if ($event.ratioY >= 0.5) tgt.index++;
+            if (tgt.index < 0) tgt.index = 0;
+
+            // 在目标列表中插入对象
+            tgt.list.splice(tgt.index, 0, src.item);
+
+            console.log(src.item.text, 'insert', $event.ratioY < 0.5 ? 'before' : 'after', tgt.item.text);
+        }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = '<div class="g-row">\n    <div class="g-col g-col-6">\n        <droppable\n            on-dragover={this._onDragOver($event)}\n            on-drop={this._onListDrop($event, {list: listA})}>\n        <ul class="m-listview m-listview-gutter">\n            {#list listA as item}\n                <droppable\n                    on-dragover={this._onDragOver($event)}\n                    on-drop={this._onDrop($event, {item: item, list: listA})}>\n                <draggable value={ @({item: item, list: listA}) }>\n                    <li><div>{item.text}</div></li>\n                </draggable>\n                </droppable>\n            {/list}\n        </ul>\n        </droppable>\n    </div>\n    <div class="g-col g-col-6">\n        <droppable\n            on-dragover={this._onDragOver($event)}\n            on-drop={this._onListDrop($event, {list: listB})}>\n        <ul class="m-listview m-listview-gutter">\n            {#list listB as item}\n                <droppable\n                    on-dragover={this._onDragOver($event)}\n                    on-drop={this._onDrop($event, {item: item, list: listB})}>\n                <draggable value={ @({item: item, list: listB}) }>\n                    <li><div>{item.text}</div></li>\n                </draggable>\n                </droppable>\n            {/list}\n        </ul>\n        </droppable>\n    </div>\n</div>';
+    var _ = RGUI._;
+    var component = new RGUI.Component({
+        template: template,
+        data: {
+            listA: [{ text: '选项A1' }, { text: '选项A2' }, { text: '选项A3' }, { text: '选项A4' }, { text: '选项A5' }],
+            listB: [{ text: '选项B1' }, { text: '选项B2' }, { text: '选项B3' }, { text: '选项B4' }, { text: '选项B5' }]
+        },
+        _onDragOver: function _onDragOver($event) {
+            var target = $event.target;
+            _.dom.delClass(target, 'z-dragTarget-before');
+            _.dom.delClass(target, 'z-dragTarget-after');
+
+            _.dom.addClass(target, 'z-dragTarget-' + ($event.ratioY < 0.5 ? 'before' : 'after'));
+        },
+        _onDrop: function _onDrop($event, tgt) {
+            var target = $event.target;
+            _.dom.delClass(target, 'z-dragTarget-before');
+            _.dom.delClass(target, 'z-dragTarget-after');
+
+            var src = $event.value;
+            src.index = src.list.indexOf(src.item);
+            tgt.index = tgt.list.indexOf(tgt.item);
+
+            // 从起始列表中删除对象
+            src.list.splice(src.index, 1);
+
+            // 计算目标列表中插入位置的index
+            if (src.list === tgt.list) tgt.index--;
+            if ($event.ratioY >= 0.5) tgt.index++;
+            if (tgt.index < 0) tgt.index = 0;
+
+            // 在目标列表中插入对象
+            tgt.list.splice(tgt.index, 0, src.item);
+
+            console.log(src.item.text, 'insert', $event.ratioY < 0.5 ? 'before' : 'after', tgt.item.text);
+        },
+        _onListDrop: function _onListDrop($event, tgt) {
+            this._onDrop($event, {
+                list: tgt.list,
+                item: tgt.list[$event.ratioY >= 0.5 ? tgt.list.length - 1 : 0]
+            });
+        }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+</script>
+</body>
+</html>

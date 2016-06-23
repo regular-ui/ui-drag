@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<!-- 该文件由rgui-tools自动生成 -->
+<meta charset="utf-8">
+<title>Regular UI</title>
+<meta name="author" content="Rainfore">
+<meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
+<meta name="description" content="Regular UI">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="icon" href="http://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://regular-ui.github.io/css/doc.default.min.css">
+<link rel="stylesheet" href="../css/index.css">
+<!--[if lt IE9]>
+<script>
+(function() {
+    if (!
+    /*@cc_on!@*/
+    0) return;
+    var e = 'abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video'.split(', ');
+    var i= e.length;
+    while (i--)
+        document.createElement(e[i]);
+})();
+</script>
+<![endif]-->
+</head>
+<body>
+<div class="g-top">
+    <div class="g-topc">
+        <a class="u-logo" href="./">Regular UI</a>
+    </div>
+</div>
+<div class="g-bd"><div class="g-bdc"><div class="g-mn g-mn-center">
+    <article class="m-article">
+        <h1>拖移<small> Movable</small></h1>
+        <h2 id="案例">案例</h2>
+<h3 id="slider">Slider</h3>
+<div class="m-example"><style>.u-slider {position: relative; height: 6px; line-height: 6px; background: #e6e6e6;}
+.u-slider .slider_bar {float: left; height: 6px; line-height: 6px; background: #67aaf5;}
+.u-slider .slider_btn {
+        box-sizing: border-box; position: absolute; left: 0;
+        margin-top: -9px; margin-left: -7px; width: 14px; height: 24px;
+        background: #fff; border: 1px solid #ccc; border-radius: 2px;
+    }</style></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-slider&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;slider_bar&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;width: {percent}%&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">axis</span>=<span class="cm-string">&quot;horizontal&quot;</span> <span class="cm-attribute">range</span>=<span class="cm-string">&quot;parent&quot;</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span>
+                <span class="cm-attribute">on-drag</span>=<span class="cm-attribute">{this._onDrag($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;slider_btn&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;left: {percent}%&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-css"><code><span class="cm-qualifier">.u-slider</span> {<span class="cm-property">position</span>: <span class="cm-atom">relative</span>; <span class="cm-property">height</span>: <span class="cm-number">6px</span>; <span class="cm-property">line-height</span>: <span class="cm-number">6px</span>; <span class="cm-property">background</span>: <span class="cm-atom">#e6e6e6</span>;}
+<span class="cm-qualifier">.u-slider</span> <span class="cm-qualifier">.slider_bar</span> {<span class="cm-property">float</span>: <span class="cm-atom">left</span>; <span class="cm-property">height</span>: <span class="cm-number">6px</span>; <span class="cm-property">line-height</span>: <span class="cm-number">6px</span>; <span class="cm-property">background</span>: <span class="cm-atom">#67aaf5</span>;}
+<span class="cm-qualifier">.u-slider</span> <span class="cm-qualifier">.slider_btn</span> {
+        <span class="cm-property">box-sizing</span>: <span class="cm-atom">border-box</span>; <span class="cm-property">position</span>: <span class="cm-atom">absolute</span>; <span class="cm-property">left</span>: <span class="cm-number">0</span>;
+        <span class="cm-property">margin-top</span>: <span class="cm-number">-9px</span>; <span class="cm-property">margin-left</span>: <span class="cm-number">-7px</span>; <span class="cm-property">width</span>: <span class="cm-number">14px</span>; <span class="cm-property">height</span>: <span class="cm-number">24px</span>;
+        <span class="cm-property">background</span>: <span class="cm-atom">#fff</span>; <span class="cm-property">border</span>: <span class="cm-number">1px</span> <span class="cm-atom">solid</span> <span class="cm-atom">#ccc</span>; <span class="cm-property">border-radius</span>: <span class="cm-number">2px</span>;
+    }
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {<span class="cm-property">percent</span>: <span class="cm-number">20</span>},
+    <span class="cm-property">_onDrag</span>(<span class="cm-def">$event</span>) {
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">percent</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">left</span><span class="cm-operator">/</span><span class="cm-variable-2">$event</span>.<span class="cm-property">range</span>.<span class="cm-property">right</span><span class="cm-operator">*</span><span class="cm-number">100</span>;
+    }
+});
+</code></pre>
+<h3 id="pallette">Pallette</h3>
+<div class="m-example"><style>.m-pallette {}
+.m-pallette .pallette_SV {position: relative; overflow: hidden; background: #f09; width: 256px; height: 256px;}
+.m-pallette .pallette_SV:before, .m-pallette .pallette_SV:after {
+    content: ''; display: block;
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+}
+.m-pallette .pallette_SV:before {background: linear-gradient(to right, white, rgba(255, 255, 255, 0));}
+.m-pallette .pallette_SV:after {background: linear-gradient(to top, black, rgba(0, 0, 0, 0));}
+.m-pallette .pallette_SV_btn {box-sizing: border-box; position: absolute; z-index: 5; margin-left: -8px; margin-top: -8px; width: 16px; height: 16px; border: 1px solid white; border-radius: 100%; box-shadow: 0 0 1px rgba(0, 0, 0, .5), inset 0 0 1px rgba(0, 0, 0, .5);}</style></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-pallette&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;pallette_SV&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-string">&quot;parent&quot;</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;pallette_SV_btn&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;left: 100px; top: 100px;&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-css"><code><span class="cm-qualifier">.m-pallette</span> {}
+<span class="cm-qualifier">.m-pallette</span> <span class="cm-qualifier">.pallette_SV</span> {<span class="cm-property">position</span>: <span class="cm-atom">relative</span>; <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>; <span class="cm-property">background</span>: <span class="cm-atom">#f09</span>; <span class="cm-property">width</span>: <span class="cm-number">256px</span>; <span class="cm-property">height</span>: <span class="cm-number">256px</span>;}
+<span class="cm-qualifier">.m-pallette</span> <span class="cm-qualifier">.pallette_SV</span>:<span class="cm-variable-3">before</span>, <span class="cm-qualifier">.m-pallette</span> <span class="cm-qualifier">.pallette_SV</span>:<span class="cm-variable-3">after</span> {
+    <span class="cm-property">content</span>: <span class="cm-string">&#39;&#39;</span>; <span class="cm-property">display</span>: <span class="cm-atom">block</span>;
+    <span class="cm-property">position</span>: <span class="cm-atom">absolute</span>; <span class="cm-property">left</span>: <span class="cm-number">0</span>; <span class="cm-property">right</span>: <span class="cm-number">0</span>; <span class="cm-property">top</span>: <span class="cm-number">0</span>; <span class="cm-property">bottom</span>: <span class="cm-number">0</span>;
+}
+<span class="cm-qualifier">.m-pallette</span> <span class="cm-qualifier">.pallette_SV</span>:<span class="cm-variable-3">before</span> {<span class="cm-property">background</span>: <span class="cm-variable">linear-gradient</span>(<span class="cm-property">to</span> <span class="cm-property">right</span>, <span class="cm-property">white</span>, <span class="cm-property">rgba</span>(<span class="cm-number">255</span>, <span class="cm-number">255</span>, <span class="cm-number">255</span>, <span class="cm-number">0</span>));}
+<span class="cm-qualifier">.m-pallette</span> <span class="cm-qualifier">.pallette_SV</span>:<span class="cm-variable-3">after</span> {<span class="cm-property">background</span>: <span class="cm-variable">linear-gradient</span>(<span class="cm-property">to</span> <span class="cm-property">top</span>, <span class="cm-property">black</span>, <span class="cm-property">rgba</span>(<span class="cm-number">0</span>, <span class="cm-number">0</span>, <span class="cm-number">0</span>, <span class="cm-number">0</span>));}
+<span class="cm-qualifier">.m-pallette</span> <span class="cm-qualifier">.pallette_SV_btn</span> {<span class="cm-property">box-sizing</span>: <span class="cm-atom">border-box</span>; <span class="cm-property">position</span>: <span class="cm-atom">absolute</span>; <span class="cm-property">z-index</span>: <span class="cm-number">5</span>; <span class="cm-property">margin-left</span>: <span class="cm-number">-8px</span>; <span class="cm-property">margin-top</span>: <span class="cm-number">-8px</span>; <span class="cm-property">width</span>: <span class="cm-number">16px</span>; <span class="cm-property">height</span>: <span class="cm-number">16px</span>; <span class="cm-property">border</span>: <span class="cm-number">1px</span> <span class="cm-atom">solid</span> <span class="cm-keyword">white</span>; <span class="cm-property">border-radius</span>: <span class="cm-number">100%</span>; <span class="cm-property">box-shadow</span>: <span class="cm-number">0</span> <span class="cm-number">0</span> <span class="cm-number">1px</span> <span class="cm-atom">rgba</span>(<span class="cm-number">0</span>, <span class="cm-number">0</span>, <span class="cm-number">0</span>, <span class="cm-number">.5</span>), <span class="cm-atom">inset</span> <span class="cm-number">0</span> <span class="cm-number">0</span> <span class="cm-number">1px</span> <span class="cm-atom">rgba</span>(<span class="cm-number">0</span>, <span class="cm-number">0</span>, <span class="cm-number">0</span>, <span class="cm-number">.5</span>);}
+</code></pre>
+<h3 id="resizable">Resizable</h3>
+<div class="m-example"><style>.m-panel {width: 100%; height: 100%; box-sizing: border-box;}
+.m-resizable {position: relative;}
+.m-resizable .resizable_handle {
+    cursor: nwse-resize;
+    position: absolute; z-index: 20;
+    width: 10px; height: 10px;
+    margin-right: -5px; margin-bottom: -5px;
+}</style></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-resizable&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;width: {width}px; height: {height}px;&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-panel m-panel-info&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;panel_bd&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Content<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">{left:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">top:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">right:</span> <span class="cm-attribute">300,</span> <span class="cm-attribute">bottom:</span> <span class="cm-attribute">200}</span> <span class="cm-attribute">}</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span> <span class="cm-attribute">on-drag</span>=<span class="cm-attribute">{this._onDrag($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;resizable_handle&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;left: {width}px; top: {height}px;&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-css"><code><span class="cm-qualifier">.m-panel</span> {<span class="cm-property">width</span>: <span class="cm-number">100%</span>; <span class="cm-property">height</span>: <span class="cm-number">100%</span>; <span class="cm-property">box-sizing</span>: <span class="cm-atom">border-box</span>;}
+<span class="cm-qualifier">.m-resizable</span> {<span class="cm-property">position</span>: <span class="cm-atom">relative</span>;}
+<span class="cm-qualifier">.m-resizable</span> <span class="cm-qualifier">.resizable_handle</span> {
+    <span class="cm-property">cursor</span>: <span class="cm-atom">nwse-resize</span>;
+    <span class="cm-property">position</span>: <span class="cm-atom">absolute</span>; <span class="cm-property">z-index</span>: <span class="cm-number">20</span>;
+    <span class="cm-property">width</span>: <span class="cm-number">10px</span>; <span class="cm-property">height</span>: <span class="cm-number">10px</span>;
+    <span class="cm-property">margin-right</span>: <span class="cm-number">-5px</span>; <span class="cm-property">margin-bottom</span>: <span class="cm-number">-5px</span>;
+}
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">width</span>: <span class="cm-number">240</span>,
+        <span class="cm-property">height</span>: <span class="cm-number">120</span>
+    },
+    <span class="cm-property">_onDrag</span>(<span class="cm-def">$event</span>) {
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">width</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">left</span>;
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">height</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$event</span>.<span class="cm-property">top</span>;
+    }
+});
+</code></pre>
+
+        
+    </article>
+</div>
+</div></div><div class="g-ft">
+    <footer class="m-footer">
+        <p><a href="http://regular-ui.github.io/" class="footer_logo"><img src="http://regular-ui.github.io/img/logo-v2.0-bg-48.png" /></p>
+        <p>
+            <a href="https://github.com/regular-ui/regular-ui" target="_blank">GitHub</a> |
+            <a href="https://github.com/regular-ui/regular-ui/issues" target="_blank">Issues</a> |
+            <a href="https://github.com/regular-ui/regular-ui/releases" target="_blank">ChangeLog</a> |
+            <a href="https://github.com/regular-ui/regular-ui/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a>
+        </p>
+        <p>Licensed under <a href="https://github.com/regular-ui/regular-ui/blob/master/LICENSE" target="_blank">MIT license</a>.</p>
+    </footer>
+</div>
+<script src="http://regular-ui.github.io/vendor/regular.min.js"></script>
+<script src="../js/index.js"></script>
+<script>
+var $$ = function(selector){return document.querySelectorAll(selector)};
+$$('.m-article > h2, .m-article > h3').forEach(function($heading) {
+    $heading.innerHTML = '<a href="#' + $heading.id + '">' + $heading.innerText + '</a>';
+});
+</script>
+<script>
+"use strict";
+
+var index = 0;
+(function (index) {
+    var template = "<div class=\"g-row\">\n    <div class=\"g-col g-col-6\">\n        <div class=\"u-slider\">\n            <div class=\"slider_bar\" style=\"width: {percent}%\"></div>\n            <movable axis=\"horizontal\" range=\"parent\" rangeMode=\"none\"\n                on-drag={this._onDrag($event)}>\n                <div class=\"slider_btn\" style=\"left: {percent}%\"></div>\n            </movable>\n        </div>\n    </div>\n</div>";
+    var component = new RGUI.Component({
+        template: template,
+        data: { percent: 20 },
+        _onDrag: function _onDrag($event) {
+            this.data.percent = $event.left / $event.range.right * 100;
+        }
+    });
+
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<div class=\"m-pallette\">\n    <div class=\"pallette_SV\">\n        <movable range=\"parent\" rangeMode=\"none\">\n            <div class=\"pallette_SV_btn\" style=\"left: 100px; top: 100px;\"></div>\n        </movable>\n    </div>\n</div>";
+    var component = new RGUI.Component({
+        template: template
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<div class=\"m-resizable\" style=\"width: {width}px; height: {height}px;\">\n    <div class=\"m-panel m-panel-info\">\n        <div class=\"panel_bd\">Content</div>\n    </div>\n    <movable range={ {left: 100, top: 100, right: 300, bottom: 200} } rangeMode=\"none\" on-drag={this._onDrag($event)}>\n        <div class=\"resizable_handle\" style=\"left: {width}px; top: {height}px;\"></div>\n    </movable>\n</div>";
+    var component = new RGUI.Component({
+        template: template,
+        data: {
+            width: 240,
+            height: 120
+        },
+        _onDrag: function _onDrag($event) {
+            this.data.width = $event.left;
+            this.data.height = $event.top;
+        }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+</script>
+</body>
+</html>
