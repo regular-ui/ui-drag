@@ -8,7 +8,7 @@
     <div class="g-col g-col-6">
         <div class="u-slider">
             <div class="slider_bar" style="width: {percent}%"></div>
-            <movable axis="horizontal" range="parent" rangeMode="none"
+            <movable axis="horizontal" range="offsetParent" rangeMode="none"
                 on-drag={this._onDrag($event)}>
                 <div class="slider_btn" style="left: {percent}%"></div>
             </movable>
@@ -45,7 +45,7 @@ let component = new RGUI.Component({
 ```xml
 <div class="m-pallette">
     <div class="pallette_SV">
-        <movable range="parent" rangeMode="none">
+        <movable range="offsetParent" rangeMode="none">
             <div class="pallette_SV_btn" style="left: 100px; top: 100px;"></div>
         </movable>
     </div>
@@ -74,7 +74,7 @@ let component = new RGUI.Component({
         <div class="panel_bd">Content</div>
     </div>
     <movable range={ {left: 100, top: 100, right: 300, bottom: 200} } rangeMode="none" on-drag={this._onDrag($event)}>
-        <div class="resizable_handle" style="left: {width}px; top: {height}px;"></div>
+        <div class="resizable_handle"></div>
     </movable>
 </div>
 ```
@@ -84,9 +84,9 @@ let component = new RGUI.Component({
 .m-resizable {position: relative;}
 .m-resizable .resizable_handle {
     cursor: nwse-resize;
-    position: absolute; z-index: 20;
+    position: absolute; z-index: 20; left: 100%; top: 100%;
     width: 10px; height: 10px;
-    margin-right: -5px; margin-bottom: -5px;
+    margin-left: -5px; margin-top: -5px;
 }
 ```
 

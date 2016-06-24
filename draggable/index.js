@@ -5,7 +5,7 @@ import manager from '../manager';
  * @class Draggable
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
- * @param {string|Dragable.Proxy|Element|function='clone'}  options.data.proxy  @=> 拖拽代理，即拖拽时移动的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`<draggable.proxy>`自定义代理，或直接传入一个元素或函数。其他值表示不使用拖拽代理。
+ * @param {string|Dragable.Proxy|Element|function='clone'}  options.data.proxy  @=> 拖拽代理，即拖拽时移动的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`<draggable.proxy>`自定义代理，或直接传入一个元素或函数。`''`表示不使用拖拽代理。
  * @param {var}                     options.data.value               => 拖拽时需要传递的值
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {string='z-draggable'}    options.data.class               => 可拖拽时（即disabled=false）给该元素附加此class
@@ -74,7 +74,7 @@ let Draggable = Component.extend({
             document.body.appendChild(proxy);
         }
 
-        this._initProxy(proxy);
+        proxy && this._initProxy(proxy);
         return proxy;
     },
     /**
@@ -147,7 +147,7 @@ let Draggable = Component.extend({
 
         // 代理元素的位置从MouseMoveStart开始算，这样在MouseDown中也可以预先处理位置
         // 获取初始的left和top值
-        let computedStyle = _.dom.getComputedStyle(proxy);
+        let computedStyle = proxy ? _.dom.getComputedStyle(proxy) : {};
         if(!computedStyle.left || computedStyle.left === 'auto')
             computedStyle.left = '0px';
         if(!computedStyle.top || computedStyle.top === 'auto')
@@ -196,8 +196,10 @@ let Draggable = Component.extend({
         // 拖拽约束
         let next = this.restrict(manager);
         // 设置位置
-        manager.proxy.style.left = next.left + 'px';
-        manager.proxy.style.top = next.top + 'px';
+        if(manager.proxy) {
+            manager.proxy.style.left = next.left + 'px';
+            manager.proxy.style.top = next.top + 'px';
+        }
         // 更新当前位置
         manager.left = next.left;
         manager.top = next.top;
@@ -258,10 +260,10 @@ let Draggable = Component.extend({
         if(manager.dragging) {
             manager.droppable && manager.droppable._drop(this);
             this.cancel();
-        } else {
-            _.dom.off(window, 'mousemove', this._onMouseMove);
-            _.dom.off(window, 'mouseup', this._onMouseUp);
         }
+
+        _.dom.off(window, 'mousemove', this._onMouseMove);
+        _.dom.off(window, 'mouseup', this._onMouseUp);
     },
     /**
      * @method cancel() 取消拖拽操作
@@ -292,9 +294,6 @@ let Draggable = Component.extend({
             top: 0,
             droppable: undefined
         });
-
-        _.dom.off(window, 'mousemove', this._onMouseMove);
-        _.dom.off(window, 'mouseup', this._onMouseUp);
     },
     /**
      * @private
@@ -302,7 +301,7 @@ let Draggable = Component.extend({
     _dragStart() {
         let source = _.dom.element(this);
         _.dom.addClass(source, this.data.sourceClass);
-        _.dom.addClass(manager.proxy, this.data.proxyClass);
+        manager.proxy && _.dom.addClass(manager.proxy, this.data.proxyClass);
 
         /**
          * @event dragstart 拖拽开始时触发
