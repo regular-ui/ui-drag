@@ -118,7 +118,9 @@ let Draggable = Component.extend({
             pageX: e.pageX,
             pageY: e.pageY,
             startX: e.clientX,
-            startY: e.clientY
+            startY: e.clientY,
+            dragX: 0,
+            dragY: 0
         });
 
         _.dom.on(window, 'mousemove', this._onMouseMove);
@@ -130,6 +132,17 @@ let Draggable = Component.extend({
     _onMouseMove($event) {
         let e = $event.event;
         $event.preventDefault();
+
+        Object.assign(manager, {
+            screenX: e.screenX,
+            screenY: e.screenY,
+            clientX: e.clientX,
+            clientY: e.clientY,
+            pageX: e.pageX,
+            pageY: e.pageY,
+            dragX: e.clientX - manager.startX,
+            dragY: e.clientY - manager.startY
+        });
 
         if(manager.dragging === false)
             this._onMouseMoveStart(e);
@@ -157,14 +170,6 @@ let Draggable = Component.extend({
             dragging: true,
             proxy,
             value: this.data.value,
-            screenX: e.screenX,
-            screenY: e.screenY,
-            clientX: e.clientX,
-            clientY: e.clientY,
-            pageX: e.pageX,
-            pageY: e.pageY,
-            dragX: e.clientX - manager.startX,
-            dragY: e.clientY - manager.startY,
             startLeft: +computedStyle.left.slice(0, -2),
             startTop: +computedStyle.top.slice(0, -2),
             droppable: undefined
@@ -182,17 +187,6 @@ let Draggable = Component.extend({
      * @return {void}
      */
     _onMouseMoving: function(e) {
-        Object.assign(manager, {
-            screenX: e.screenX,
-            screenY: e.screenY,
-            clientX: e.clientX,
-            clientY: e.clientY,
-            pageX: e.pageX,
-            pageY: e.pageY,
-            dragX: e.clientX - manager.startX,
-            dragY: e.clientY - manager.startY
-        });
-
         // 拖拽约束
         let next = this.restrict(manager);
         // 设置位置

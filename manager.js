@@ -6,18 +6,18 @@ Object.assign(_.dom, {
             docElem = doc.documentElement,
             body = doc.body;
 
-        let box = elem.getBoundingClientRect ? elem.getBoundingClientRect() : {top: 0, left: 0};
+        let box = elem.getBoundingClientRect ? elem.getBoundingClientRect() : {left: 0, top: 0};
 
-        let clientTop = docElem.clientTop || body.clientTop || 0,
-            clientLeft = docElem.clientLeft || body.clientLeft || 0;
+        let clientLeft = docElem.clientLeft || body.clientLeft || 0;
+        let clientTop = docElem.clientTop || body.clientTop || 0;
 
-        return {top: box.top - clientTop, left: box.left - clientLeft};
+        return {left: box.left - clientLeft, top: box.top - clientTop};
     },
     getSize(elem) {
         return {width: elem.clientWidth, height: elem.clientHeight}
     },
-    getDimension(elem, fixed) {
-        return Object.assign(this.getSize(elem), this.getPosition(elem, fixed));
+    getDimension(elem) {
+        return Object.assign(this.getSize(elem), this.getPosition(elem));
     },
     isInRect(position, dimension) {
         if(!position || !dimension)

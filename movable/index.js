@@ -1,3 +1,4 @@
+import {_} from 'rgui-base';
 import Draggable from '../draggable';
 import manager from '../manager';
 
@@ -48,13 +49,18 @@ let Movable = Draggable.extend({
         if(typeof this.data.range === 'object')
             range = this.data.range;
         else if(this.data.range === 'offsetParent') {
-            var offsetParent = proxy.offsetParent;
+            let offsetParent = proxy.offsetParent;
             if(offsetParent)
                 range = {left: 0, top: 0, right: offsetParent.offsetWidth, bottom: offsetParent.offsetHeight};
             else
                 range = {left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight};
         } else if(this.data.range === 'parent') {
-            // range = proxy.parentElement;
+            let parent = proxy.parentElement;
+            if(_.dom.getComputedStyle(proxy, 'position') === 'fixed') {
+                range = _.dom.getDimension(parent);
+                range.right = range.left + range.width;
+                range.bottom = range.top + range.height;
+            }
         } else if(range instanceof Element) {
             //
         }
