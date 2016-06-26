@@ -39,6 +39,7 @@ let Movable = Draggable.extend({
     /**
      * @method _getRange(proxy) 获取拖拽范围
      * @private
+     * @param  {Element} proxy 拖拽代理元素
      * @return {Element} 拖拽范围元素
      */
     _getRange(proxy) {
@@ -86,7 +87,7 @@ let Movable = Draggable.extend({
             if(this.data.rangeMode === 'none') {
                 next.left = Math.min(Math.max(params.range.left, next.left), params.range.right);
                 next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom);
-            } else if(this.data.rangMode === 'inside') {
+            } else if(this.data.rangeMode === 'inside') {
                 next.left = Math.min(Math.max(params.range.left, next.left), params.range.right - manager.proxy.offsetWidth);
                 next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom - manager.proxy.offsetHeight);
             }
