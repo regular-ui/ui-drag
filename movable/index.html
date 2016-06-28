@@ -41,6 +41,17 @@
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-primary&quot;</span><span class="cm-tagcm-bracket">&gt;</span>拖我<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
+<h3 id="轴向约束">轴向约束</h3>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">axis</span>=<span class="cm-string">&quot;horizontal&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-info&quot;</span><span class="cm-tagcm-bracket">&gt;</span>水平<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">axis</span>=<span class="cm-string">&quot;vertical&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-warning&quot;</span><span class="cm-tagcm-bracket">&gt;</span>垂直<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<h3 id="范围约束">范围约束</h3>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-string">&quot;offsetParent&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-info&quot;</span><span class="cm-tagcm-bracket">&gt;</span>范围<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
 
         <h2 id="API">API</h2>
 
@@ -61,9 +72,13 @@
             
             <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
             
-            <tr><td class="f-wsn"><code>data.proxy</code></td><td class="f-wsn">string<br>Dragable.Proxy<br>Element<br>function</td><td class="f-wsn"><code>&#39;self&#39;</code></td><td class="f-tac">outer @=&gt; inner</td><td>拖拽代理，即拖拽时移动的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`&lt;draggable.proxy&gt;`自定义代理，或直接传入一个元素或函数。其他值表示不使用拖拽代理。</td></tr>
+            <tr><td class="f-wsn"><code>data.proxy</code></td><td class="f-wsn">string<br>Dragable.Proxy<br>Element<br>function</td><td class="f-wsn"><code>&#39;self&#39;</code></td><td class="f-tac">outer @=&gt; inner</td><td>拖拽代理，即拖拽时移动的元素。默认值为`clone`，表示拖拽时会拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`&lt;draggable.proxy&gt;`自定义代理，或直接传入一个元素或函数。`&#39;&#39;`表示不使用拖拽代理。</td></tr>
             
-            <tr><td class="f-wsn"><code>data.axis</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;both&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>拖拽代理移动时限制的轴向，`both`表示可以在任意方向上移动，`horizontal`表示限制在水平方向上移动，`vertical`表示限制在垂直方向上移动</td></tr>
+            <tr><td class="f-wsn"><code>data.axis</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;both&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>拖拽代理移动时限制的轴向，`both`表示可以在任意方向上移动，`horizontal`表示限制在水平方向上移动，`vertical`表示限制在垂直方向上移动。</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.range</code></td><td class="f-wsn">string<br>object<br>Element<br>function</td><td class="f-wsn"></td><td class="f-tac">outer @=&gt; inner</td><td>拖拽范围。值可以为一个{left,top,right,bottom}格式的对象，表示代理元素移动的上下左右边界。当值为`offsetParent`，拖拽时代理元素限制在offsetParent中移动；当值为`parent`；当值为。也可以直接传入一个元素或函数。</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.rangeMode</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>inside</code></td><td class="f-tac">outer  =&gt; inner</td><td>拖拽范围模式，默认为`inside`，表示在拖拽范围内移动，`none`表示代理元素的left,top直接按拖拽范围计算。</td></tr>
             
             <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outer  =&gt; inner</td><td>是否禁用</td></tr>
             
@@ -111,9 +126,18 @@
 <script src="../js/index.js"></script>
 <script>
 var $$ = function(selector){return document.querySelectorAll(selector)};
+// 添加小标题链接
 $$('.m-article > h2, .m-article > h3').forEach(function($heading) {
     $heading.innerHTML = '<a href="#' + $heading.id + '">' + $heading.innerText + '</a>';
 });
+// 在模板中添加console
+(function() {
+    var supr = RGUI.Component.prototype.config;
+    RGUI.Component.prototype.config = function() {
+        this.data.console = console;
+        return supr.call(this);
+    }
+})();
 </script>
 <script>
 "use strict";
@@ -121,6 +145,20 @@ $$('.m-article > h2, .m-article > h3').forEach(function($heading) {
 var index = 0;
 (function (index) {
     var template = "<movable><div class=\"u-color u-color-primary\">拖我</div></movable>";
+    var component = new RGUI.Component({
+        template: template
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<movable axis=\"horizontal\"><div class=\"u-color u-color-info\">水平</div></movable>\n<movable axis=\"vertical\"><div class=\"u-color u-color-warning\">垂直</div></movable>";
+    var component = new RGUI.Component({
+        template: template
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<movable range=\"offsetParent\"><div class=\"u-color u-color-info\">范围</div></movable>";
     var component = new RGUI.Component({
         template: template
     });

@@ -172,9 +172,18 @@
 <script src="../js/index.js"></script>
 <script>
 var $$ = function(selector){return document.querySelectorAll(selector)};
+// 添加小标题链接
 $$('.m-article > h2, .m-article > h3').forEach(function($heading) {
     $heading.innerHTML = '<a href="#' + $heading.id + '">' + $heading.innerText + '</a>';
 });
+// 在模板中添加console
+(function() {
+    var supr = RGUI.Component.prototype.config;
+    RGUI.Component.prototype.config = function() {
+        this.data.console = console;
+        return supr.call(this);
+    }
+})();
 </script>
 <script>
 "use strict";
