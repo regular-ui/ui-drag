@@ -108,8 +108,11 @@ let Draggable = Component.extend({
         if(this.data.disabled)
             return;
 
-        // 鼠标坐标从MouseDown开始算，防止出现第一次移动的误差
         let e = $event.event;
+        // 阻止浏览器的默认行为，特别是IE的选择行为
+        $event.preventDefault();
+
+        // 鼠标坐标从MouseDown开始算，防止出现第一次移动的误差
         Object.assign(manager, {
             screenX: e.screenX,
             screenY: e.screenY,
