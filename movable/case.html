@@ -8,9 +8,9 @@
 <meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
 <meta name="description" content="Regular UI">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<link rel="icon" href="https://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="https://regular-ui.github.io/img/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://regular-ui.github.io/css/doc.default.min.css">
+<link rel="icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/doc.default.min.css">
 <link rel="stylesheet" href="../css/index.css">
 <!--[if lt IE9]>
 <script>
@@ -148,7 +148,7 @@
 </div>
 </div></div><div class="g-ft">
     <footer class="m-footer">
-        <p><a href="https://regular-ui.github.io/" class="footer_logo"><img src="https://regular-ui.github.io/img/logo-v2.0-bg-48.png" /></p>
+        <p><a href="https://regular-ui.github.io/v0.2/" class="footer_logo"><img src="https://regular-ui.github.io/v0.2/img/logo-v2.0-bg-48.png" /></p>
         <p>
             <a href="https://github.com/regular-ui/regular-ui" target="_blank">GitHub</a> |
             <a href="https://github.com/regular-ui/regular-ui/issues" target="_blank">Issues</a> |
@@ -158,23 +158,10 @@
         <p>Licensed under <a href="https://github.com/regular-ui/regular-ui/blob/master/LICENSE" target="_blank">MIT license</a>.</p>
     </footer>
 </div>
-<script src="https://regular-ui.github.io/vendor/regular.min.js"></script>
+<script src="https://regular-ui.github.io/v0.2/vendor/polyfill.min.js"></script>
+<script src="https://regular-ui.github.io/v0.2/vendor/regular.min.js"></script>
 <script src="../js/index.js"></script>
-<script>
-var $$ = function(selector){return document.querySelectorAll(selector)};
-// 添加小标题链接
-$$('.m-article > h2, .m-article > h3').forEach(function($heading) {
-    $heading.innerHTML = '<a href="#' + $heading.id + '">' + $heading.innerText + '</a>';
-});
-// 在模板中添加console
-(function() {
-    var supr = RGUI.Component.prototype.config;
-    RGUI.Component.prototype.config = function() {
-        this.data.console = console;
-        return supr.call(this);
-    }
-})();
-</script>
+<script src="https://regular-ui.github.io/v0.2/js/helper.js"></script>
 <script>
 "use strict";
 
