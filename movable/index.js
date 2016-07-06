@@ -1,6 +1,6 @@
-import {_} from 'rgui-base';
 import Draggable from '../draggable';
 import manager from '../manager';
+import { dom } from 'regularjs';
 
 /**
  * @class Movable
@@ -15,7 +15,7 @@ import manager from '../manager';
  * @param {string='z-dragSource'}   options.data.sourceClass         => 拖拽时给起始元素附加此class
  * @param {string='z-dragProxy'}    options.data.proxyClass          => 拖拽时给代理元素附加此class
  */
-let Movable = Draggable.extend({
+const Movable = Draggable.extend({
     name: 'movable',
     template: '{#inc this.$body}',
     /**
@@ -46,26 +46,26 @@ let Movable = Draggable.extend({
     _getRange(proxy) {
         let range;
 
-        if(typeof this.data.range === 'object')
+        if (typeof this.data.range === 'object')
             range = this.data.range;
-        else if(this.data.range === 'offsetParent') {
-            let offsetParent = proxy.offsetParent;
-            if(offsetParent)
-                range = {left: 0, top: 0, right: offsetParent.offsetWidth, bottom: offsetParent.offsetHeight};
+        else if (this.data.range === 'offsetParent') {
+            const offsetParent = proxy.offsetParent;
+            if (offsetParent)
+                range = { left: 0, top: 0, right: offsetParent.offsetWidth, bottom: offsetParent.offsetHeight };
             else
-                range = {left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight};
-        } else if(this.data.range === 'parent') {
-            let parent = proxy.parentElement;
-            if(_.dom.getComputedStyle(proxy, 'position') === 'fixed') {
-                range = _.dom.getDimension(parent);
+                range = { left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight };
+        } else if (this.data.range === 'parent') {
+            const parent = proxy.parentElement;
+            if (dom.getComputedStyle(proxy, 'position') === 'fixed') {
+                range = dom.getDimension(parent);
                 range.right = range.left + range.width;
                 range.bottom = range.top + range.height;
             }
-        } else if(range instanceof Element) {
+        } else if (range instanceof Element) {
             //
         }
 
-        if(range) {
+        if (range) {
             range.width = range.right - range.left;
             range.height = range.bottom - range.top;
         }
@@ -76,10 +76,10 @@ let Movable = Draggable.extend({
      * @protected
      * @override
      */
-    _onMouseMoveStart: function(e) {
+    _onMouseMoveStart(e) {
         this.supr(e);
 
-        if(manager.proxy)
+        if (manager.proxy)
             manager.range = this._getRange(manager.proxy);
     },
     /**
@@ -87,29 +87,29 @@ let Movable = Draggable.extend({
      * @override
      */
     restrict(params) {
-        let next = this.supr(params);
+        const next = this.supr(params);
 
-        if(params.range) {
-            if(this.data.rangeMode === 'none') {
+        if (params.range) {
+            if (this.data.rangeMode === 'none') {
                 next.left = Math.min(Math.max(params.range.left, next.left), params.range.right);
                 next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom);
-            } else if(this.data.rangeMode === 'inside') {
+            } else if (this.data.rangeMode === 'inside') {
                 next.left = Math.min(Math.max(params.range.left, next.left), params.range.right - manager.proxy.offsetWidth);
                 next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom - manager.proxy.offsetHeight);
             }
         }
 
-        if(this.data.grid) {
-
+        if (this.data.grid) {
+            // @TODO
         }
 
-        if(this.data.axis === 'vertical')
+        if (this.data.axis === 'vertical')
             next.left = params.startLeft;
-        if(this.data.axis === 'horizontal')
+        if (this.data.axis === 'horizontal')
             next.top = params.startTop;
 
         return next;
-    }
+    },
 });
 
 export default Movable;

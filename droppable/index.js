@@ -1,5 +1,6 @@
-import {Component, _} from 'rgui-base';
+import { Component } from 'rgui-base';
 import manager from '../manager';
+import { dom } from 'regularjs';
 
 /**
  * @class Droppable
@@ -10,7 +11,7 @@ import manager from '../manager';
  * @param {string='z-droppable'}    options.data.class               => 可放置时（即disabled=false）给元素附加此class
  * @param {string='z-dragTarget'}   options.data.dragTarget          => 拖拽在该元素上方时给该元素附加此class
  */
-let Droppable = Component.extend({
+const Droppable = Component.extend({
     name: 'droppable',
     template: '{#inc this.$body}',
     /**
@@ -21,7 +22,7 @@ let Droppable = Component.extend({
         this.data = Object.assign({
             data: null,
             'class': 'z-droppable',
-            dragTarget: 'z-dragTarget'
+            dragTarget: 'z-dragTarget',
         }, this.data);
         this.supr();
 
@@ -32,9 +33,9 @@ let Droppable = Component.extend({
      * @override
      */
     init() {
-        let inner = _.dom.element(this);
+        const inner = dom.element(this);
         this.$watch('disabled', (newValue) =>
-            _.dom[newValue ? 'delClass' : 'addClass'](inner, this.data['class']));
+            dom[newValue ? 'delClass' : 'addClass'](inner, this.data['class']));
         this.supr();
     },
     /**
@@ -49,8 +50,8 @@ let Droppable = Component.extend({
      * @private
      */
     _dragEnter(origin) {
-        let element = _.dom.element(this);
-        _.dom.addClass(element, this.data.dragTarget);
+        const element = dom.element(this);
+        dom.addClass(element, this.data.dragTarget);
 
         /**
          * @event dragenter 拖拽进入该元素时触发
@@ -78,18 +79,18 @@ let Droppable = Component.extend({
          */
         this.$emit('dragenter', Object.assign({
             sender: this,
-            origin: origin,
-            source: _.dom.element(origin),
+            origin,
+            source: dom.element(origin),
             target: element,
-            cancel: origin.cancel
+            cancel: origin.cancel,
         }, manager));
     },
     /**
      * @private
      */
     _dragLeave(origin) {
-        let element = _.dom.element(this);
-        _.dom.delClass(element, this.data.dragTarget);
+        const element = dom.element(this);
+        dom.delClass(element, this.data.dragTarget);
 
         /**
          * @event dragleave 拖拽离开该元素时触发
@@ -117,18 +118,18 @@ let Droppable = Component.extend({
          */
         this.$emit('dragleave', Object.assign({
             sender: this,
-            origin: origin,
-            source: _.dom.element(origin),
+            origin,
+            source: dom.element(origin),
             target: element,
-            cancel: origin.cancel
+            cancel: origin.cancel,
         }, manager));
     },
     /**
      * @private
      */
     _dragOver(origin) {
-        let element = _.dom.element(this);
-        let dimension = _.dom.getDimension(element);
+        const element = dom.element(this);
+        const dimension = dom.getDimension(element);
 
         /**
          * @event dragover 拖拽在该元素上方时触发
@@ -158,21 +159,21 @@ let Droppable = Component.extend({
          */
         this.$emit('dragover', Object.assign({
             sender: this,
-            origin: origin,
-            source: _.dom.element(origin),
+            origin,
+            source: dom.element(origin),
             target: element,
             ratioX: (manager.clientX - dimension.left)/dimension.width,
             ratioY: (manager.clientY - dimension.top)/dimension.height,
-            cancel: origin.cancel
+            cancel: origin.cancel,
         }, manager));
     },
     /**
      * @private
      */
     _drop(origin) {
-        let element = _.dom.element(this);
-        _.dom.delClass(element, this.data.dragTarget);
-        let dimension = _.dom.getDimension(element);
+        const element = dom.element(this);
+        dom.delClass(element, this.data.dragTarget);
+        const dimension = dom.getDimension(element);
 
         this.data.value = origin.data.value;
         this.$update();
@@ -204,13 +205,13 @@ let Droppable = Component.extend({
          */
         this.$emit('drop', Object.assign({
             sender: this,
-            origin: origin,
-            source: _.dom.element(origin),
+            origin,
+            source: dom.element(origin),
             target: element,
             ratioX: (manager.clientX - dimension.left)/dimension.width,
-            ratioY: (manager.clientY - dimension.top)/dimension.height
+            ratioY: (manager.clientY - dimension.top)/dimension.height,
         }, manager));
-    }
+    },
 });
 
 export default Droppable;

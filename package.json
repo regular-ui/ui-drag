@@ -25,6 +25,6 @@
     "movable"
   ],
   "dependencies": {
-    "rgui-base": "^0.2.0-alpha"
+    "rgui-base": "0.2.0-alpha.1"
   }
 }

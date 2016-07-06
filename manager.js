@@ -1,26 +1,26 @@
-import {_} from 'rgui-base';
+import { dom } from 'regularjs';
 
-Object.assign(_.dom, {
+Object.assign(dom, {
     getPosition(elem) {
-        let doc = elem && elem.ownerDocument,
-            docElem = doc.documentElement,
-            body = doc.body;
+        const doc = elem && elem.ownerDocument;
+        const docElem = doc.documentElement;
+        const body = doc.body;
 
-        let box = elem.getBoundingClientRect ? elem.getBoundingClientRect() : {left: 0, top: 0};
+        const box = elem.getBoundingClientRect ? elem.getBoundingClientRect() : { left: 0, top: 0 };
 
-        let clientLeft = docElem.clientLeft || body.clientLeft || 0;
-        let clientTop = docElem.clientTop || body.clientTop || 0;
+        const clientLeft = docElem.clientLeft || body.clientLeft || 0;
+        const clientTop = docElem.clientTop || body.clientTop || 0;
 
-        return {left: box.left - clientLeft, top: box.top - clientTop};
+        return { left: box.left - clientLeft, top: box.top - clientTop };
     },
     getSize(elem) {
-        return {width: elem.clientWidth, height: elem.clientHeight}
+        return { width: elem.clientWidth, height: elem.clientHeight };
     },
     getDimension(elem) {
         return Object.assign(this.getSize(elem), this.getPosition(elem));
     },
     isInRect(position, dimension) {
-        if(!position || !dimension)
+        if (!position || !dimension)
             return false;
 
         return position.left > dimension.left
@@ -29,12 +29,12 @@ Object.assign(_.dom, {
             && (position.top < dimension.top + dimension.height);
     },
     getComputedStyle(elem, property) {
-        let computedStyle = elem.currentStyle || window.getComputedStyle(elem, null);
+        const computedStyle = elem.currentStyle || window.getComputedStyle(elem, null);
         return property ? computedStyle[property] : computedStyle;
-    }
+    },
 });
 
-let manager = {
+const manager = {
     dragging: false,
     value: undefined,
     proxy: undefined,
@@ -53,7 +53,7 @@ let manager = {
     dragLeft: 0,
     dragTop: 0,
     droppable: undefined,
-    droppables: []
-}
+    droppables: [],
+};
 
 export default manager;

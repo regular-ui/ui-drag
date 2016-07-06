@@ -40,7 +40,6 @@
 ```
 
 ```javascript
-let _ = RGUI._;
 let component = new RGUI.Component({
     template,
     data: {
@@ -260,7 +259,6 @@ let component = new RGUI.Component({
 ```
 
 ```javascript
-let _ = RGUI._;
 let component = new RGUI.Component({
     template,
     data: {
@@ -281,15 +279,15 @@ let component = new RGUI.Component({
     },
     _onDragOver($event) {
         let target = $event.target;
-        _.dom.delClass(target, 'z-dragTarget-before');
-        _.dom.delClass(target, 'z-dragTarget-after');
+        Regular.dom.delClass(target, 'z-dragTarget-before');
+        Regular.dom.delClass(target, 'z-dragTarget-after');
 
-        _.dom.addClass(target, 'z-dragTarget-' + ($event.ratioY < 0.5 ? 'before' : 'after'));
+        Regular.dom.addClass(target, 'z-dragTarget-' + ($event.ratioY < 0.5 ? 'before' : 'after'));
     },
     _onDrop($event, tgt) {
         let target = $event.target;
-        _.dom.delClass(target, 'z-dragTarget-before');
-        _.dom.delClass(target, 'z-dragTarget-after');
+        Regular.dom.delClass(target, 'z-dragTarget-before');
+        Regular.dom.delClass(target, 'z-dragTarget-after');
 
         let src = $event.value;
         src.index = src.list.indexOf(src.item);
@@ -369,7 +367,6 @@ let component = new RGUI.Component({
 ```
 
 ```javascript
-let _ = RGUI._;
 let component = new RGUI.Component({
     template,
     data: {
@@ -390,15 +387,15 @@ let component = new RGUI.Component({
     },
     _onDragOver($event) {
         let target = $event.target;
-        _.dom.delClass(target, 'z-dragTarget-before');
-        _.dom.delClass(target, 'z-dragTarget-after');
+        Regular.dom.delClass(target, 'z-dragTarget-before');
+        Regular.dom.delClass(target, 'z-dragTarget-after');
 
-        _.dom.addClass(target, 'z-dragTarget-' + ($event.ratioY < 0.5 ? 'before' : 'after'));
+        Regular.dom.addClass(target, 'z-dragTarget-' + ($event.ratioY < 0.5 ? 'before' : 'after'));
     },
     _onDrop($event, tgt) {
         let target = $event.target;
-        _.dom.delClass(target, 'z-dragTarget-before');
-        _.dom.delClass(target, 'z-dragTarget-after');
+        Regular.dom.delClass(target, 'z-dragTarget-before');
+        Regular.dom.delClass(target, 'z-dragTarget-after');
 
         let src = $event.value;
         src.index = src.list.indexOf(src.item);
