@@ -8,16 +8,16 @@ Regular UI - Draggable, Droppable, Movable
 [![Dependencies][david-img]][david-url]
 [![NPM Download][download-img]][download-url]
 
-[npm-img]: http://img.shields.io/npm/v/rgui-drag.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/rgui-drag
+[npm-img]: http://img.shields.io/npm/v/rgui-ui-drag.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/rgui-ui-drag
 [travis-img]: https://img.shields.io/travis/regular-ui/ui-drag.svg?style=flat-square
 [travis-url]: https://travis-ci.org/regular-ui/ui-drag
 [coveralls-img]: https://img.shields.io/coveralls/regular-ui/ui-drag.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/regular-ui/ui-drag
 [david-img]: http://img.shields.io/david/regular-ui/ui-drag.svg?style=flat-square
 [david-url]: https://david-dm.org/regular-ui/ui-drag
-[download-img]: https://img.shields.io/npm/dm/rgui-drag.svg?style=flat-square
-[download-url]: https://npmjs.org/package/rgui-drag
+[download-img]: https://img.shields.io/npm/dm/rgui-ui-drag.svg?style=flat-square
+[download-url]: https://npmjs.org/package/rgui-ui-drag
 
 ## Draggable（拖拽）
 
