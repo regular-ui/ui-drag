@@ -1,5 +1,5 @@
 {
-  "name": "rgui-drag",
+  "name": "rgui-ui-drag",
   "description": "Regular UI - Draggable, Droppable, Movable",
   "version": "0.2.0",
   "author": "Rainfore <rainforest92@126.com>",
@@ -25,6 +25,6 @@
     "movable"
   ],
   "dependencies": {
-    "rgui-base": "0.2.0-alpha.1"
+    "rgui-ui-base": "0.2.0-alpha"
   }
 }

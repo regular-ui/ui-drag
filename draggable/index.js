@@ -1,4 +1,4 @@
-import { Component } from 'rgui-base';
+import { Component } from 'rgui-ui-base';
 import manager from '../manager';
 import { dom } from 'regularjs';
 
