@@ -51,6 +51,6 @@
     <movable range="offsetParent" rangeMode="inside"><div class="u-color u-color-info" style="position: absolute;">inside</div></movable>
 </div>
 <div class="m-well">
-    <movable range="offsetParent" rangeMode="none"><div class="u-color u-color-info" style="position: absolute;">none</div></movable>
+    <movable range="offsetParent" rangeMode="center"><div class="u-color u-color-info" style="position: absolute; margin-left: -68px; margin-top: -68px;">center</div></movable>
 </div>
 ```

@@ -10,7 +10,7 @@ import { dom } from 'regularjs';
  * @param {string='both'}           options.data.axis                => 拖拽代理移动时限制的轴向，`both`表示可以在任意方向上移动，`horizontal`表示限制在水平方向上移动，`vertical`表示限制在垂直方向上移动。
  * @param {object={x:0,y:0}}        options.data.grid                => 拖拽代理移动时限制的网格。值为一个{x,y}格式的对象，表示水平方向和垂直方向网格的大小。
  * @param {string|object|function}  options.data.range              @=> 拖拽范围。值可以为一个{left,top,right,bottom}格式的对象，表示代理元素移动的上下左右边界，也可以传一个函数。当值为`offsetParent`，代理元素限制在offsetParent中移动，仅适用于`position`为`absolute`的情况；当值为`parent`；当值为`window`时，拖拽时代理元素限制在window中移动，仅适用于`position`为`fixed`的情况。
- * @param {string=inside}           options.data.rangeMode           => 拖拽范围模式，默认为`inside`，表示在拖拽范围内移动，`none`表示代理元素的left,top直接按拖拽范围计算。
+ * @param {string=inside}           options.data.rangeMode           => 拖拽范围模式，默认为`inside`，表示在拖拽范围内侧移动，`center`表示在拖拽范围边缘及内侧移动。
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {string='z-draggable'}    options.data.class               => 可拖拽时（即disabled=false）给该元素附加此class
  * @param {string='z-dragSource'}   options.data.sourceClass         => 拖拽时给起始元素附加此class
@@ -56,35 +56,38 @@ const Movable = Draggable.extend({
                 proxy.style.position = 'absolute';
 
             const offsetParent = proxy.offsetParent;
-            if (this.data.rangeMode === 'inside')
-                range = { left: 0, top: 0, right: offsetParent.clientWidth, bottom: offsetParent.clientHeight };
-            else if (this.data.rangeMode === 'none')
-                range = { left: 0, top: 0, right: (offsetParent.clientWidth + offsetParent.offsetWidth)/2, bottom: (offsetParent.clientHeight + offsetParent.offsetHeight)/2 };
-            else if (this.data.rangeMode === 'outside')
-                range = { left: 0, top: 0, right: offsetParent.offsetWidth, bottom: offsetParent.offsetHeight };
+            range = Object.assign({ left: 0, top: 0 }, dom.getSize(offsetParent, this.data.rangeMode));
         } else if (this.data.range === 'window') {
             if (dom.getComputedStyle(proxy, 'position') !== 'fixed')
                 proxy.style.position = 'fixed';
 
-            range = { left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight };
+            range = { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
         }
 
         if (range) {
-            range.width = range.right - range.left;
-            range.height = range.bottom - range.top;
+            if(range.width !== undefined && range.height !== undefined) {
+                range.right = range.left + range.width;
+                range.bottom = range.top + range.height;
+            } else if (range.right !== undefined && range.bottom !== undefined) {
+                range.width = range.right - range.left;
+                range.height = range.bottom - range.top;
+            }
         }
 
         return range;
     },
     /**
-     * @protected
+     * @method _onMouseMoveStart(e) 处理第一次鼠标移动事件
+     * @private
      * @override
+     * @param  {MouseEvent} e 鼠标事件
+     * @return {void}
      */
     _onMouseMoveStart(e) {
-        this.supr(e);
-
-        if (manager.proxy)
+        this.supr(e, true);
+        if(manager.proxy)
             manager.range = this._getRange(manager.proxy);
+        this._dragStart();
     },
     /**
      * @protected
@@ -98,7 +101,7 @@ const Movable = Draggable.extend({
             if (this.data.rangeMode === 'inside') {
                 next.left = Math.min(Math.max(params.range.left, next.left), params.range.right - manager.proxy.offsetWidth);
                 next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom - manager.proxy.offsetHeight);
-            } else if (this.data.rangeMode === 'none') {
+            } else if (this.data.rangeMode === 'center') {
                 next.left = Math.min(Math.max(params.range.left, next.left), params.range.right);
                 next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom);
             } else if (this.data.rangeMode === 'outside') {

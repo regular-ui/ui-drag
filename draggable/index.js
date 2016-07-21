@@ -88,7 +88,7 @@ const Draggable = Component.extend({
     _setProxyFixed(proxy, position = { left: 0, top: 0 }) {
         proxy.style.left = position.left + 'px';
         proxy.style.top = position.top + 'px';
-        proxy.style.zIndex = '2000';
+        proxy.style.zIndex = '9999';
         proxy.style.position = 'fixed';
         proxy.style.display = '';
     },
@@ -159,7 +159,7 @@ const Draggable = Component.extend({
      * @param  {MouseEvent} e 鼠标事件
      * @return {void}
      */
-    _onMouseMoveStart(e) {
+    _onMouseMoveStart(e, override) {
         const proxy = this._getProxy();
 
         // 代理元素的位置从MouseMoveStart开始算，这样在MouseDown中也可以预先处理位置
@@ -182,7 +182,7 @@ const Draggable = Component.extend({
         manager.left = manager.startLeft;
         manager.top = manager.startTop;
 
-        this._dragStart();
+        !override && this._dragStart();
     },
     /**
      * @method _onMouseMoveStart(e) 处理后续鼠标移动事件

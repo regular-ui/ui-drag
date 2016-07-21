@@ -13,11 +13,16 @@ Object.assign(dom, {
 
         return { left: box.left - clientLeft, top: box.top - clientTop };
     },
-    getSize(elem) {
-        return { width: elem.clientWidth, height: elem.clientHeight };
+    getSize(elem, mode = 'outside') {
+        if (mode === 'inside')
+            return { width: elem.clientWidth, height: elem.clientHeight };
+        else if (mode === 'center')
+            return { width: (elem.clientWidth + elem.offsetWidth)/2, height: (elem.offsetHeight + elem.clientHeight)/2 };
+        else if (mode === 'outside')
+            return { width: elem.offsetWidth, height: elem.offsetHeight };
     },
-    getDimension(elem) {
-        return Object.assign(this.getSize(elem), this.getPosition(elem));
+    getDimension(elem, mode) {
+        return Object.assign(this.getSize(elem, mode), this.getPosition(elem));
     },
     isInRect(position, dimension) {
         if (!position || !dimension)
