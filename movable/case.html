@@ -3,7 +3,7 @@
 <head>
 <!-- 该文件由rgui-tools自动生成 -->
 <meta charset="utf-8">
-<title>Regular UI</title>
+<title>Regular UI - Movable</title>
 <meta name="author" content="Rainfore">
 <meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
 <meta name="description" content="Regular UI">
@@ -116,7 +116,7 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-panel m-panel-info&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;panel_bd&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Content<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">{left:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">top:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">right:</span> <span class="cm-attribute">300,</span> <span class="cm-attribute">bottom:</span> <span class="cm-attribute">200}</span> <span class="cm-attribute">}</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span> <span class="cm-attribute">on-drag</span>=<span class="cm-attribute">{this._onDrag($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">{</span> <span class="cm-attribute">left:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">top:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">right:</span> <span class="cm-attribute">300,</span> <span class="cm-attribute">bottom:</span> <span class="cm-attribute">200</span> <span class="cm-attribute">}</span> <span class="cm-attribute">}</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span> <span class="cm-attribute">on-drag</span>=<span class="cm-attribute">{this._onDrag($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;resizable_handle&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -186,7 +186,7 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<div class=\"m-resizable\" style=\"width: {width}px; height: {height}px;\">\n    <div class=\"m-panel m-panel-info\">\n        <div class=\"panel_bd\">Content</div>\n    </div>\n    <movable range={ {left: 100, top: 100, right: 300, bottom: 200} } rangeMode=\"none\" on-drag={this._onDrag($event)}>\n        <div class=\"resizable_handle\"></div>\n    </movable>\n</div>";
+    var template = "<div class=\"m-resizable\" style=\"width: {width}px; height: {height}px;\">\n    <div class=\"m-panel m-panel-info\">\n        <div class=\"panel_bd\">Content</div>\n    </div>\n    <movable range={ { left: 100, top: 100, right: 300, bottom: 200 } } rangeMode=\"none\" on-drag={this._onDrag($event)}>\n        <div class=\"resizable_handle\"></div>\n    </movable>\n</div>";
     var component = new RGUI.Component({
         template: template,
         data: {

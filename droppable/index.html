@@ -3,7 +3,7 @@
 <head>
 <!-- 该文件由rgui-tools自动生成 -->
 <meta charset="utf-8">
-<title>Regular UI</title>
+<title>Regular UI - Droppable</title>
 <meta name="author" content="Rainfore">
 <meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
 <meta name="description" content="Regular UI">
@@ -44,6 +44,22 @@
 <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-string">&quot;error&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-error&quot;</span><span class="cm-tagcm-bracket">&gt;</span>拖我<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">p</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{dropData}</span><span class="cm-tagcm-bracketcm-error">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-{dropData || &#39;primary&#39;}&quot;</span><span class="cm-tagcm-bracket">&gt;</span>放到这里<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<h3 id="事件">事件</h3>
+<p>请打开浏览器的控制台查看结果。</p>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">value</span>=<span class="cm-string">&quot;success&quot;</span>
+    <span class="cm-attribute">on-dragstart</span>=<span class="cm-attribute">{console.log(</span><span class="cm-stringcm-error">&#39;on-dragstart:&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;$event:&#39;</span><span class="cm-attribute">,</span> <span class="cm-attribute">$event)}</span>
+    <span class="cm-attribute">on-dragend</span>=<span class="cm-attribute">{console.log(</span><span class="cm-stringcm-error">&#39;on-dragend:&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;$event:&#39;</span><span class="cm-attribute">,</span> <span class="cm-attribute">$event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-success&quot;</span><span class="cm-tagcm-bracket">&gt;</span>拖我<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">droppable</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{dropData}</span>
+    <span class="cm-attribute">on-dragenter</span>=<span class="cm-attribute">{console.log(</span><span class="cm-stringcm-error">&#39;on-dragenter:&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;$event:&#39;</span><span class="cm-attribute">,</span> <span class="cm-attribute">$event)}</span>
+    <span class="cm-attribute">on-dragleave</span>=<span class="cm-attribute">{console.log(</span><span class="cm-stringcm-error">&#39;on-dragleave:&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;$event:&#39;</span><span class="cm-attribute">,</span> <span class="cm-attribute">$event)}</span>
+    <span class="cm-attribute">on-drop</span>=<span class="cm-attribute">{console.log(</span><span class="cm-stringcm-error">&#39;on-drop:&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;$event:&#39;</span><span class="cm-attribute">,</span> <span class="cm-attribute">$event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-{dropData || &#39;primary&#39;}&quot;</span><span class="cm-tagcm-bracket">&gt;</span>放到这里<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">droppable</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 
         <h2 id="API">API</h2>
@@ -350,6 +366,13 @@
 var index = 0;
 (function (index) {
     var template = "<draggable value=\"success\"><div class=\"u-color u-color-success\">拖我</div></draggable>\n<draggable value=\"warning\"><div class=\"u-color u-color-warning\">拖我</div></draggable>\n<draggable value=\"error\"><div class=\"u-color u-color-error\">拖我</div></draggable>\n<p></p>\n<droppable value={dropData}><div class=\"u-color u-color-{dropData || 'primary'}\">放到这里</div></droppable>";
+    var component = new RGUI.Component({
+        template: template
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<draggable value=\"success\"\n    on-dragstart={console.log('on-dragstart:', '$event:', $event)}\n    on-dragend={console.log('on-dragend:', '$event:', $event)}>\n    <div class=\"u-color u-color-success\">拖我</div>\n</draggable>\n<droppable value={dropData}\n    on-dragenter={console.log('on-dragenter:', '$event:', $event)}\n    on-dragleave={console.log('on-dragleave:', '$event:', $event)}\n    on-drop={console.log('on-drop:', '$event:', $event)}>\n    <div class=\"u-color u-color-{dropData || 'primary'}\">放到这里</div>\n</droppable>";
     var component = new RGUI.Component({
         template: template
     });

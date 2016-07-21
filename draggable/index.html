@@ -3,7 +3,7 @@
 <head>
 <!-- 该文件由rgui-tools自动生成 -->
 <meta charset="utf-8">
-<title>Regular UI</title>
+<title>Regular UI - Draggable</title>
 <meta name="author" content="Rainfore">
 <meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
 <meta name="description" content="Regular UI">
@@ -42,6 +42,7 @@
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-primary&quot;</span><span class="cm-tagcm-bracket">&gt;</span>拖我<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <h3 id="移动自身">移动自身</h3>
+<p>如果DOM元素的CSS属性<code>position</code>默认为<code>static</code>，则在拖拽时会自动设置为<code>relative</code>。</p>
 <div class="m-example"></div>
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span> <span class="cm-attribute">proxy</span>=<span class="cm-string">&quot;self&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-info&quot;</span><span class="cm-tagcm-bracket">&gt;</span>自身<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -54,6 +55,16 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable.proxy</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-warning&quot;</span><span class="cm-tagcm-bracket">&gt;</span>代理<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable.proxy</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<h3 id="事件">事件</h3>
+<p>请打开浏览器的控制台查看结果。</p>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">draggable</span>
+    <span class="cm-attribute">on-dragstart</span>=<span class="cm-attribute">{console.log(</span><span class="cm-stringcm-error">&#39;on-dragstart:&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;$event:&#39;</span><span class="cm-attribute">,</span> <span class="cm-attribute">$event)}</span>
+    <span class="cm-attribute">on-dragend</span>=<span class="cm-attribute">{console.log(</span><span class="cm-stringcm-error">&#39;on-dragend:&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;$event:&#39;</span><span class="cm-attribute">,</span> <span class="cm-attribute">$event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-color u-color-primary&quot;</span><span class="cm-tagcm-bracket">&gt;</span>拖我<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">draggable</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 
@@ -306,6 +317,13 @@ var index = 0;
 })(index++);
 (function (index) {
     var template = "<draggable>\n    <div class=\"u-color u-color-primary\">拖我</div>\n    <draggable.proxy>\n        <div class=\"u-color u-color-warning\">代理</div>\n    </draggable.proxy>\n</draggable>";
+    var component = new RGUI.Component({
+        template: template
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<draggable\n    on-dragstart={console.log('on-dragstart:', '$event:', $event)}\n    on-dragend={console.log('on-dragend:', '$event:', $event)}>\n    <div class=\"u-color u-color-primary\">拖我</div>\n</draggable>";
     var component = new RGUI.Component({
         template: template
     });
