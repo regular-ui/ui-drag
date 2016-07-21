@@ -1,6 +1,8 @@
 ## 案例
 ### Slider
 
+这是Slider的一个简单示例，完整实现请参见[这里](https://regular-ui.github.io/ui-slider/slider/index.html)。
+
 <div class="m-example"></div>
 
 ```xml
@@ -65,6 +67,8 @@ let component = new RGUI.Component({
 ```
 
 ### Resizable
+
+这是Resizable的一个简单示例，完整实现请参见[这里](https://regular-ui.github.io/ui-resizable/resizable/index.html)。
 
 <div class="m-example"></div>
 
