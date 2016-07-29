@@ -65,7 +65,7 @@ const Movable = Draggable.extend({
         }
 
         if (range) {
-            if(range.width !== undefined && range.height !== undefined) {
+            if (range.width !== undefined && range.height !== undefined) {
                 range.right = range.left + range.width;
                 range.bottom = range.top + range.height;
             } else if (range.right !== undefined && range.bottom !== undefined) {
@@ -85,7 +85,7 @@ const Movable = Draggable.extend({
      */
     _onMouseMoveStart(e) {
         this.supr(e, true);
-        if(manager.proxy)
+        if (manager.proxy)
             manager.range = this._getRange(manager.proxy);
         this._dragStart();
     },
