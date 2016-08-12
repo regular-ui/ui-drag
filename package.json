@@ -8,23 +8,12 @@
   "homepage": "http://regular-ui.github.io",
   "bugs": {"url": "http://github.com/regular-ui/ui-drag/issues"},
   "license": "MIT",
-  "keywords": [
-    "regular",
-    "ui",
-    "rgui",
-    "drag",
-    "drop",
-    "movable"
-  ],
-  "tags": [
-    "regular",
-    "ui",
-    "rgui",
-    "drag",
-    "drop",
-    "movable"
-  ],
+  "keywords": ["regular", "ui", "rgui", "drag", "drop", "movable"],
+  "tags": ["regular", "ui", "rgui", "drag", "drop", "movable"],
   "dependencies": {
-    "rgui-ui-base": "0.2.0-alpha.2"
+    "rgui-ui-base": "^0.2.0-alpha.4"
+  },
+  "peerDependencies": {
+    "regularjs": "^0.4.3"
   }
 }
