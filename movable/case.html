@@ -50,7 +50,7 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-slider&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
             <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;slider_bar&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;width: {percent}%&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">axis</span>=<span class="cm-string">&quot;horizontal&quot;</span> <span class="cm-attribute">range</span>=<span class="cm-string">&quot;offsetParent&quot;</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">axis</span>=<span class="cm-string">&quot;horizontal&quot;</span> <span class="cm-attribute">range</span>=<span class="cm-string">&quot;offsetParent&quot;</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;center&quot;</span>
                 <span class="cm-attribute">on-drag</span>=<span class="cm-attribute">{this._onDrag($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
                 <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;slider_btn&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;left: {percent}%&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
             <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -87,7 +87,7 @@
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-pallette&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;pallette_SV&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-string">&quot;offsetParent&quot;</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-string">&quot;offsetParent&quot;</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;center&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
             <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;pallette_SV_btn&quot;</span> <span class="cm-attribute">style</span>=<span class="cm-string">&quot;left: 100px; top: 100px;&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -118,7 +118,7 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-panel m-panel-info&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;panel_bd&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Content<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">{</span> <span class="cm-attribute">left:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">top:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">right:</span> <span class="cm-attribute">300,</span> <span class="cm-attribute">bottom:</span> <span class="cm-attribute">200</span> <span class="cm-attribute">}</span> <span class="cm-attribute">}</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;none&quot;</span> <span class="cm-attribute">on-drag</span>=<span class="cm-attribute">{this._onDrag($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">movable</span> <span class="cm-attribute">range</span>=<span class="cm-attribute">{</span> <span class="cm-attribute">{</span> <span class="cm-attribute">left:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">top:</span> <span class="cm-attribute">100,</span> <span class="cm-attribute">right:</span> <span class="cm-attribute">300,</span> <span class="cm-attribute">bottom:</span> <span class="cm-attribute">200</span> <span class="cm-attribute">}</span> <span class="cm-attribute">}</span> <span class="cm-attribute">rangeMode</span>=<span class="cm-string">&quot;center&quot;</span> <span class="cm-attribute">on-drag</span>=<span class="cm-attribute">{this._onDrag($event)}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;resizable_handle&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">movable</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -169,7 +169,7 @@
 
 var index = 0;
 (function (index) {
-    var template = "<div class=\"g-row\">\n    <div class=\"g-col g-col-6\">\n        <div class=\"u-slider\">\n            <div class=\"slider_bar\" style=\"width: {percent}%\"></div>\n            <movable axis=\"horizontal\" range=\"offsetParent\" rangeMode=\"none\"\n                on-drag={this._onDrag($event)}>\n                <div class=\"slider_btn\" style=\"left: {percent}%\"></div>\n            </movable>\n        </div>\n    </div>\n</div>";
+    var template = "<div class=\"g-row\">\n    <div class=\"g-col g-col-6\">\n        <div class=\"u-slider\">\n            <div class=\"slider_bar\" style=\"width: {percent}%\"></div>\n            <movable axis=\"horizontal\" range=\"offsetParent\" rangeMode=\"center\"\n                on-drag={this._onDrag($event)}>\n                <div class=\"slider_btn\" style=\"left: {percent}%\"></div>\n            </movable>\n        </div>\n    </div>\n</div>";
     var component = new RGUI.Component({
         template: template,
         data: { percent: 20 },
@@ -181,14 +181,14 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<div class=\"m-pallette\">\n    <div class=\"pallette_SV\">\n        <movable range=\"offsetParent\" rangeMode=\"none\">\n            <div class=\"pallette_SV_btn\" style=\"left: 100px; top: 100px;\"></div>\n        </movable>\n    </div>\n</div>";
+    var template = "<div class=\"m-pallette\">\n    <div class=\"pallette_SV\">\n        <movable range=\"offsetParent\" rangeMode=\"center\">\n            <div class=\"pallette_SV_btn\" style=\"left: 100px; top: 100px;\"></div>\n        </movable>\n    </div>\n</div>";
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<div class=\"m-resizable\" style=\"width: {width}px; height: {height}px;\">\n    <div class=\"m-panel m-panel-info\">\n        <div class=\"panel_bd\">Content</div>\n    </div>\n    <movable range={ { left: 100, top: 100, right: 300, bottom: 200 } } rangeMode=\"none\" on-drag={this._onDrag($event)}>\n        <div class=\"resizable_handle\"></div>\n    </movable>\n</div>";
+    var template = "<div class=\"m-resizable\" style=\"width: {width}px; height: {height}px;\">\n    <div class=\"m-panel m-panel-info\">\n        <div class=\"panel_bd\">Content</div>\n    </div>\n    <movable range={ { left: 100, top: 100, right: 300, bottom: 200 } } rangeMode=\"center\" on-drag={this._onDrag($event)}>\n        <div class=\"resizable_handle\"></div>\n    </movable>\n</div>";
     var component = new RGUI.Component({
         template: template,
         data: {
