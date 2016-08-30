@@ -24,7 +24,7 @@ const Movable = Draggable.extend({
      * @override
      */
     config() {
-        this.data = Object.assign({
+        this.defaults({
             proxy: 'self',
             // value: undefined,
             // 'class': 'z-draggable',
@@ -35,7 +35,7 @@ const Movable = Draggable.extend({
             range: undefined,
             rangeMode: 'inside',
             // snap
-        }, this.data);
+        });
         this.supr();
     },
     /**

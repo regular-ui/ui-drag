@@ -19,11 +19,11 @@ const Droppable = Component.extend({
      * @override
      */
     config() {
-        this.data = Object.assign({
+        this.defaults({
             data: null,
             'class': 'z-droppable',
             dragTarget: 'z-dragTarget',
-        }, this.data);
+        });
         this.supr();
 
         manager.droppables.push(this);

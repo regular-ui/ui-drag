@@ -1,7 +1,7 @@
 {
   "name": "rgui-ui-drag",
   "description": "Regular UI - Draggable, Droppable, Movable",
-  "version": "0.2.0-alpha",
+  "version": "0.2.0-alpha.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "regular-ui/ui-drag",
@@ -11,7 +11,7 @@
   "keywords": ["regular", "ui", "rgui", "drag", "drop", "movable"],
   "tags": ["regular", "ui", "rgui", "drag", "drop", "movable"],
   "dependencies": {
-    "rgui-ui-base": "^0.2.0-alpha.4"
+    "rgui-ui-base": "^0.2.0-alpha.5"
   },
   "peerDependencies": {
     "regularjs": "^0.4.3"

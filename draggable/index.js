@@ -21,13 +21,13 @@ const Draggable = Component.extend({
      * @override
      */
     config() {
-        this.data = Object.assign({
+        this.defaults({
             proxy: 'clone',
             value: undefined,
             'class': 'z-draggable',
             sourceClass: 'z-dragSource',
             proxyClass: 'z-dragProxy',
-        }, this.data);
+        });
         this.supr();
 
         this._onMouseDown = this._onMouseDown.bind(this);
