@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/doc.default.min.css">
+<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/docs.default.min.css">
 <link rel="stylesheet" href="../css/index.css">
 <!--[if lt IE9]>
 <script>
@@ -79,44 +79,46 @@
 
         <h2 id="API">API</h2>
 
-<h3 id="Class">Class</h3>
-<h4>Movable</h4>
-<p>继承自<strong>Draggable</strong>。</p>
-<p></p>
-<div id="j-class"></div>
 
-<h3 id="Options">Options</h3>
-<h4>new Movable()</h4>
-<table>
-    <thead>
-        <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
-    </thead>
-    <tbody>
-        
+    <h3 id="Class">Class</h3>
+    <h4>Movable</h4>
+    <p>继承自<strong></strong>。</p>
+    <p></p>
+    <div id="j-class"></div>
+
+    <h3 id="Options">Options</h3>
+    <h4>new Movable()</h4>
+    <table>
+        <thead>
+            <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
+        </thead>
+        <tbody>
             
-            <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">Object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.proxy</code></td><td class="f-wsn">string<br>Dragable.Proxy<br>Element<br>function</td><td class="f-wsn"><code>&#39;self&#39;</code></td><td class="f-tac">outside @=&gt; inside</td><td>拖拽代理，即拖拽时移动的元素。默认值为`clone`，表示拖拽时会拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`&lt;draggable.proxy&gt;`自定义代理，或直接传入一个元素或函数。`&#39;&#39;`表示不使用拖拽代理。</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.axis</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;both&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽代理移动时限制的轴向，`both`表示可以在任意方向上移动，`horizontal`表示限制在水平方向上移动，`vertical`表示限制在垂直方向上移动。</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.grid</code></td><td class="f-wsn">Object</td><td class="f-wsn"><code>{x:0,y:0}</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽代理移动时限制的网格。值为一个{x,y}格式的对象，表示水平方向和垂直方向网格的大小。</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.range</code></td><td class="f-wsn">string<br>object<br>function</td><td class="f-wsn"></td><td class="f-tac">outside @=&gt; inside</td><td>拖拽范围。值可以为一个{left,top,right,bottom}格式的对象，表示代理元素移动的上下左右边界，也可以传一个函数。当值为`offsetParent`，代理元素限制在offsetParent中移动，仅适用于`position`为`absolute`的情况；当值为`parent`；当值为`window`时，拖拽时代理元素限制在window中移动，仅适用于`position`为`fixed`的情况。</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.rangeMode</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>inside</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽范围模式，默认为`inside`，表示在拖拽范围内侧移动，`center`表示在拖拽范围边缘及内侧移动。</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.class</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-draggable&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>可拖拽时（即disabled=false）给该元素附加此class</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.sourceClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragSource&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给起始元素附加此class</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.proxyClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragProxy&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给代理元素附加此class</td></tr>
+                
             
-            <tr><td class="f-wsn"><code>data.proxy</code></td><td class="f-wsn">string<br>Dragable.Proxy<br>Element<br>function</td><td class="f-wsn"><code>&#39;self&#39;</code></td><td class="f-tac">outside @=&gt; inside</td><td>拖拽代理，即拖拽时移动的元素。默认值为`clone`，表示拖拽时会拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`&lt;draggable.proxy&gt;`自定义代理，或直接传入一个元素或函数。`&#39;&#39;`表示不使用拖拽代理。</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.axis</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;both&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽代理移动时限制的轴向，`both`表示可以在任意方向上移动，`horizontal`表示限制在水平方向上移动，`vertical`表示限制在垂直方向上移动。</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.grid</code></td><td class="f-wsn">object</td><td class="f-wsn"><code>{x:0,y:0}</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽代理移动时限制的网格。值为一个{x,y}格式的对象，表示水平方向和垂直方向网格的大小。</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.range</code></td><td class="f-wsn">string<br>object<br>function</td><td class="f-wsn"></td><td class="f-tac">outside @=&gt; inside</td><td>拖拽范围。值可以为一个{left,top,right,bottom}格式的对象，表示代理元素移动的上下左右边界，也可以传一个函数。当值为`offsetParent`，代理元素限制在offsetParent中移动，仅适用于`position`为`absolute`的情况；当值为`parent`；当值为`window`时，拖拽时代理元素限制在window中移动，仅适用于`position`为`fixed`的情况。</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.rangeMode</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>inside</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽范围模式，默认为`inside`，表示在拖拽范围内侧移动，`center`表示在拖拽范围边缘及内侧移动。</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.class</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-draggable&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>可拖拽时（即disabled=false）给该元素附加此class</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.sourceClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragSource&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给起始元素附加此class</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.proxyClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragProxy&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给代理元素附加此class</td></tr>
-            
-        
-    </tbody>
-</table>
+        </tbody>
+    </table>
+
 <div id="j-options"></div>
 
 
@@ -157,21 +159,21 @@
 
 var index = 0;
 (function (index) {
-    var template = "<movable><div class=\"u-color u-color-primary\">拖我</div></movable>";
+    var template = "<movable><div class=\"u-color u-color-primary\">\u62D6\u6211</div></movable>";
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<movable axis=\"horizontal\"><div class=\"u-color u-color-info\">水平</div></movable>\n<movable axis=\"vertical\"><div class=\"u-color u-color-warning\">垂直</div></movable>";
+    var template = "<movable axis=\"horizontal\"><div class=\"u-color u-color-info\">\u6C34\u5E73</div></movable>\n<movable axis=\"vertical\"><div class=\"u-color u-color-warning\">\u5782\u76F4</div></movable>";
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<movable grid={ { x: 40, y: 30 } }><div class=\"u-color u-color-success\">网格</div></movable>";
+    var template = "<movable grid={ { x: 40, y: 30 } }><div class=\"u-color u-color-success\">\u7F51\u683C</div></movable>";
     var component = new RGUI.Component({
         template: template
     });

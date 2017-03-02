@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/doc.default.min.css">
+<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/docs.default.min.css">
 <link rel="stylesheet" href="../css/index.css">
 <!--[if lt IE9]>
 <script>
@@ -177,7 +177,7 @@
 
 var index = 0;
 (function (index) {
-    var template = "<button class=\"u-btn u-btn-primary\" on-click={visible = true}>显示弹窗</button>\n<div class=\"m-modal\" r-hide={!visible}>\n    <div class=\"modal_dialog\" ref=\"modalDialog\">\n        <draggable proxy={this.$refs.modalDialog}>\n        <div class=\"modal_hd\">\n            <a class=\"modal_close\" on-click={visible = false}><i class=\"u-icon u-icon-close\"></i></a>\n            <h3 class=\"modal_title\">提示</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\">请拖动标题栏</div>\n        <div class=\"modal_ft\">\n            <button class=\"u-btn u-btn-primary\" on-click={visible = false}>确定</button>\n        </div>\n    </div>\n</div>";
+    var template = "<button class=\"u-btn u-btn-primary\" on-click={visible = true}>\u663E\u793A\u5F39\u7A97</button>\n<div class=\"m-modal\" r-hide={!visible}>\n    <div class=\"modal_dialog\" ref=\"modalDialog\">\n        <draggable proxy={this.$refs.modalDialog}>\n        <div class=\"modal_hd\">\n            <a class=\"modal_close\" on-click={visible = false}><i class=\"u-icon u-icon-close\"></i></a>\n            <h3 class=\"modal_title\">\u63D0\u793A</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\">\u8BF7\u62D6\u52A8\u6807\u9898\u680F</div>\n        <div class=\"modal_ft\">\n            <button class=\"u-btn u-btn-primary\" on-click={visible = false}>\u786E\u5B9A</button>\n        </div>\n    </div>\n</div>";
     var component = new RGUI.Component({
         template: template,
         data: { visible: false }
@@ -185,7 +185,7 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<div class=\"g-row\">\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable0\"><div class=\"u-ball\"></div></draggable>\n            水平约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable1\"><div class=\"u-ball\"></div></draggable>\n            垂直约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable2\"><div class=\"u-ball\"></div></draggable>\n            45度约束\n        </div>\n    </div>\n</div>\n<div class=\"g-row\">\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable3\"><div class=\"u-ball\"></div></draggable>\n            范围约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable4\"><div class=\"u-ball\"></div></draggable>\n            网格约束\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable5\"><div class=\"u-ball\" style=\"left: 160px; top: 120px;\"></div></draggable>\n            圆约束\n        </div>\n    </div>\n</div>";
+    var template = "<div class=\"g-row\">\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable0\"><div class=\"u-ball\"></div></draggable>\n            \u6C34\u5E73\u7EA6\u675F\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable1\"><div class=\"u-ball\"></div></draggable>\n            \u5782\u76F4\u7EA6\u675F\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable2\"><div class=\"u-ball\"></div></draggable>\n            45\u5EA6\u7EA6\u675F\n        </div>\n    </div>\n</div>\n<div class=\"g-row\">\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable3\"><div class=\"u-ball\"></div></draggable>\n            \u8303\u56F4\u7EA6\u675F\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable4\"><div class=\"u-ball\"></div></draggable>\n            \u7F51\u683C\u7EA6\u675F\n        </div>\n    </div>\n    <div class=\"g-col g-col-4\">\n        <div class=\"m-well\">\n            <draggable proxy=\"self\" ref=\"draggable5\"><div class=\"u-ball\" style=\"left: 160px; top: 120px;\"></div></draggable>\n            \u5706\u7EA6\u675F\n        </div>\n    </div>\n</div>";
     var component = new RGUI.Component({
         template: template,
         init: function init() {

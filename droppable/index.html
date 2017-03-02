@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/doc.default.min.css">
+<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/docs.default.min.css">
 <link rel="stylesheet" href="../css/index.css">
 <!--[if lt IE9]>
 <script>
@@ -64,34 +64,36 @@
 
         <h2 id="API">API</h2>
 
-<h3 id="Class">Class</h3>
-<h4>Droppable</h4>
-<p>继承自<strong>Component</strong>。</p>
-<p></p>
-<div id="j-class"></div>
 
-<h3 id="Options">Options</h3>
-<h4>new Droppable()</h4>
-<table>
-    <thead>
-        <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
-    </thead>
-    <tbody>
-        
+    <h3 id="Class">Class</h3>
+    <h4>Droppable</h4>
+    <p>继承自<strong></strong>。</p>
+    <p></p>
+    <div id="j-class"></div>
+
+    <h3 id="Options">Options</h3>
+    <h4>new Droppable()</h4>
+    <table>
+        <thead>
+            <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
+        </thead>
+        <tbody>
             
-            <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">Object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.value</code></td><td class="f-wsn">var</td><td class="f-wsn"></td><td class="f-tac">outside &lt;=  inside</td><td>拖放后传递过来的值</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.class</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-droppable&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>可放置时（即disabled=false）给元素附加此class</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.dragTarget</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragTarget&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽在该元素上方时给该元素附加此class</td></tr>
+                
             
-            <tr><td class="f-wsn"><code>data.value</code></td><td class="f-wsn">var</td><td class="f-wsn"></td><td class="f-tac">outside &lt;=  inside</td><td>拖放后传递过来的值</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.class</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-droppable&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>可放置时（即disabled=false）给元素附加此class</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.dragTarget</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragTarget&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽在该元素上方时给该元素附加此class</td></tr>
-            
-        
-    </tbody>
-</table>
+        </tbody>
+    </table>
+
 <div id="j-options"></div>
 
 
@@ -365,14 +367,14 @@
 
 var index = 0;
 (function (index) {
-    var template = "<draggable value=\"success\"><div class=\"u-color u-color-success\">拖我</div></draggable>\n<draggable value=\"warning\"><div class=\"u-color u-color-warning\">拖我</div></draggable>\n<draggable value=\"error\"><div class=\"u-color u-color-error\">拖我</div></draggable>\n<p></p>\n<droppable value={dropData}><div class=\"u-color u-color-{dropData || 'primary'}\">放到这里</div></droppable>";
+    var template = "<draggable value=\"success\"><div class=\"u-color u-color-success\">\u62D6\u6211</div></draggable>\n<draggable value=\"warning\"><div class=\"u-color u-color-warning\">\u62D6\u6211</div></draggable>\n<draggable value=\"error\"><div class=\"u-color u-color-error\">\u62D6\u6211</div></draggable>\n<p></p>\n<droppable value={dropData}><div class=\"u-color u-color-{dropData || 'primary'}\">\u653E\u5230\u8FD9\u91CC</div></droppable>";
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<draggable value=\"success\"\n    on-dragstart={console.log('on-dragstart:', '$event:', $event)}\n    on-dragend={console.log('on-dragend:', '$event:', $event)}>\n    <div class=\"u-color u-color-success\">拖我</div>\n</draggable>\n<droppable value={dropData}\n    on-dragenter={console.log('on-dragenter:', '$event:', $event)}\n    on-dragleave={console.log('on-dragleave:', '$event:', $event)}\n    on-drop={console.log('on-drop:', '$event:', $event)}>\n    <div class=\"u-color u-color-{dropData || 'primary'}\">放到这里</div>\n</droppable>";
+    var template = "<draggable value=\"success\"\n    on-dragstart={console.log('on-dragstart:', '$event:', $event)}\n    on-dragend={console.log('on-dragend:', '$event:', $event)}>\n    <div class=\"u-color u-color-success\">\u62D6\u6211</div>\n</draggable>\n<droppable value={dropData}\n    on-dragenter={console.log('on-dragenter:', '$event:', $event)}\n    on-dragleave={console.log('on-dragleave:', '$event:', $event)}\n    on-drop={console.log('on-drop:', '$event:', $event)}>\n    <div class=\"u-color u-color-{dropData || 'primary'}\">\u653E\u5230\u8FD9\u91CC</div>\n</droppable>";
     var component = new RGUI.Component({
         template: template
     });

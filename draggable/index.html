@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/doc.default.min.css">
+<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/docs.default.min.css">
 <link rel="stylesheet" href="../css/index.css">
 <!--[if lt IE9]>
 <script>
@@ -70,38 +70,40 @@
 
         <h2 id="API">API</h2>
 
-<h3 id="Class">Class</h3>
-<h4>Draggable</h4>
-<p>继承自<strong>Component</strong>。</p>
-<p></p>
-<div id="j-class"></div>
 
-<h3 id="Options">Options</h3>
-<h4>new Draggable()</h4>
-<table>
-    <thead>
-        <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
-    </thead>
-    <tbody>
-        
+    <h3 id="Class">Class</h3>
+    <h4>Draggable</h4>
+    <p>继承自<strong></strong>。</p>
+    <p></p>
+    <div id="j-class"></div>
+
+    <h3 id="Options">Options</h3>
+    <h4>new Draggable()</h4>
+    <table>
+        <thead>
+            <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
+        </thead>
+        <tbody>
             
-            <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">Object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.proxy</code></td><td class="f-wsn">string<br>Dragable.Proxy<br>Element<br>function</td><td class="f-wsn"><code>&#39;clone&#39;</code></td><td class="f-tac">outside @=&gt; inside</td><td>拖拽代理，即拖拽时移动的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`&lt;draggable.proxy&gt;`自定义代理，或直接传入一个元素或函数。`&#39;&#39;`表示不使用拖拽代理。</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.value</code></td><td class="f-wsn">var</td><td class="f-wsn"></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时需要传递的值</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.class</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-draggable&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>可拖拽时（即disabled=false）给该元素附加此class</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.sourceClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragSource&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给起始元素附加此class</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.proxyClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragProxy&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给代理元素附加此class</td></tr>
+                
             
-            <tr><td class="f-wsn"><code>data.proxy</code></td><td class="f-wsn">string<br>Dragable.Proxy<br>Element<br>function</td><td class="f-wsn"><code>&#39;clone&#39;</code></td><td class="f-tac">outside @=&gt; inside</td><td>拖拽代理，即拖拽时移动的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`&lt;draggable.proxy&gt;`自定义代理，或直接传入一个元素或函数。`&#39;&#39;`表示不使用拖拽代理。</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.value</code></td><td class="f-wsn">var</td><td class="f-wsn"></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时需要传递的值</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.class</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-draggable&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>可拖拽时（即disabled=false）给该元素附加此class</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.sourceClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragSource&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给起始元素附加此class</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.proxyClass</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;z-dragProxy&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>拖拽时给代理元素附加此class</td></tr>
-            
-        
-    </tbody>
-</table>
+        </tbody>
+    </table>
+
 <div id="j-options"></div>
 
 
@@ -302,28 +304,28 @@
 
 var index = 0;
 (function (index) {
-    var template = "<draggable><div class=\"u-color u-color-primary\">拖我</div></draggable>";
+    var template = "<draggable><div class=\"u-color u-color-primary\">\u62D6\u6211</div></draggable>";
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<draggable proxy=\"self\"><div class=\"u-color u-color-info\">自身</div></draggable>";
+    var template = "<draggable proxy=\"self\"><div class=\"u-color u-color-info\">\u81EA\u8EAB</div></draggable>";
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<draggable>\n    <div class=\"u-color u-color-primary\">拖我</div>\n    <draggable.proxy>\n        <div class=\"u-color u-color-warning\">代理</div>\n    </draggable.proxy>\n</draggable>";
+    var template = "<draggable>\n    <div class=\"u-color u-color-primary\">\u62D6\u6211</div>\n    <draggable.proxy>\n        <div class=\"u-color u-color-warning\">\u4EE3\u7406</div>\n    </draggable.proxy>\n</draggable>";
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<draggable\n    on-dragstart={console.log('on-dragstart:', '$event:', $event)}\n    on-dragend={console.log('on-dragend:', '$event:', $event)}>\n    <div class=\"u-color u-color-primary\">拖我</div>\n</draggable>";
+    var template = "<draggable\n    on-dragstart={console.log('on-dragstart:', '$event:', $event)}\n    on-dragend={console.log('on-dragend:', '$event:', $event)}>\n    <div class=\"u-color u-color-primary\">\u62D6\u6211</div>\n</draggable>";
     var component = new RGUI.Component({
         template: template
     });
