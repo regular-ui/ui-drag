@@ -4,8 +4,8 @@ import { dom } from 'regularjs';
 
 /**
  * @class Draggable
- * @extend Component
- * @param {object}                  options.data                     =  绑定属性
+ * @extends Component
+ * @param {Object}                  options.data                     =  绑定属性
  * @param {string|Dragable.Proxy|Element|function='clone'}  options.data.proxy  @=> 拖拽代理，即拖拽时移动的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`<draggable.proxy>`自定义代理，或直接传入一个元素或函数。`''`表示不使用拖拽代理。
  * @param {var}                     options.data.value               => 拖拽时需要传递的值
  * @param {boolean=false}           options.data.disabled            => 是否禁用
@@ -44,8 +44,8 @@ const Draggable = Component.extend({
         dom.on(inner, 'mousedown', this._onMouseDown);
         this.supr();
 
-        this.$watch('disabled', (newValue) =>
-            dom[newValue ? 'delClass' : 'addClass'](inner, this.data['class']));
+        this.$watch('disabled', (disabled) =>
+            dom[disabled ? 'delClass' : 'addClass'](inner, this.data['class']));
     },
     /**
      * @method _getProxy() 获取拖拽代理

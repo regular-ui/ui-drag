@@ -4,8 +4,8 @@ import { dom } from 'regularjs';
 
 /**
  * @class Droppable
- * @extend Component
- * @param {object}                  options.data                     =  绑定属性
+ * @extends Component
+ * @param {Object}                  options.data                     =  绑定属性
  * @param {var}                     options.data.value              <=  拖放后传递过来的值
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {string='z-droppable'}    options.data.class               => 可放置时（即disabled=false）给元素附加此class
@@ -34,8 +34,8 @@ const Droppable = Component.extend({
      */
     init() {
         const inner = dom.element(this);
-        this.$watch('disabled', (newValue) =>
-            dom[newValue ? 'delClass' : 'addClass'](inner, this.data['class']));
+        this.$watch('disabled', (disabled) =>
+            dom[disabled ? 'delClass' : 'addClass'](inner, this.data['class']));
         this.supr();
     },
     /**
