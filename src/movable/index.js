@@ -99,8 +99,10 @@ const Movable = Draggable.extend({
         // 范围约束
         if (params.range) {
             if (this.data.rangeMode === 'inside') {
-                next.left = Math.min(Math.max(params.range.left, next.left), params.range.right - manager.proxy.offsetWidth);
-                next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom - manager.proxy.offsetHeight);
+                const minTop = params.range.bottom - manager.proxy.offsetHeight;
+                const minLeft = params.range.right - manager.proxy.offsetWidth;
+                next.left = Math.min(Math.max(params.range.left, next.left), minLeft < 0 ? 0 : minLeft);
+                next.top = Math.min(Math.max(params.range.top, next.top), minTop < 0 ? 0 : minTop);
             } else if (this.data.rangeMode === 'center') {
                 next.left = Math.min(Math.max(params.range.left, next.left), params.range.right);
                 next.top = Math.min(Math.max(params.range.top, next.top), params.range.bottom);
